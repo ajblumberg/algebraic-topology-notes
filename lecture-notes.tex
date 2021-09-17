@@ -1,0 +1,249 @@
+\documentclass[12pt]{article} 
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{calc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{relsize}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\input{Young.sty}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem*{observation}{Observation}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{example}{Example}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem*{exercise}{Exercise}
+
+\title{Algebraic Topology Notes}
+\author{Amal Mattoo}
+
+\begin{document}
+	\maketitle 
+	\section{Monday, September 13}
+	Logistics 
+	\begin{itemize}
+		\item Textbooks: Peter May's ``Concise Course in Algebraic Topology'' and Tom Diecks ``Algebraic Topology''
+		\item Take home midterm and final
+		\item Grading: for graduate students, presumably ``you get an A for being alive'' 
+	\end{itemize}
+	This is a modern class with high tech stuff (he doesn't like Hatcher). 
+	
+	Slogan: algebraic topology is the study of functors from some suitable category\footnote{Cartesian closed symmetric monoidal} of spaces to Abelian groups that 1 take homotopy equivalences to isomorphisms and 2 can often be computed inductively. 
+	
+	We want to solve problems in geometry by turning them into problems into algebra. Broadly, geometry is hard and geometry is easy (true to varying degrees).
+	
+	\begin{definition}
+		A category $C$ is a collection of objects $\text{Ob}(C)$, and for each pair $X,Y\in\text{Ob}(C)$ a set\footnote{We will mostly ignore set theory complications. However, they become more relevant when it comes to localization.} $\text{Hom}(X,Y)$, along with an associative map $\text{Hom}(Y,Z)\times \text{Hom}(X,Y)\to\text{Hom}(X,Z)$, and for every $X\in\text{Ob}(C)$ there is an identity map $\text{id}_X\in\text{Hom}(X,Y)$ such that $\text{id}_{X}\circ\gamma=\gamma\circ\text{id}_{X}=\gamma$ for all maps $\gamma$. 
+	\end{definition} 
+	\begin{example}
+		\begin{itemize}
+			\item \emph{Top}: spaces with continuous maps maps
+			\item \emph{Fin}: finite sets with maps of sets
+			\item \emph{Ab}: abelian groups with group homomorphisms
+			\item \emph{R}: rings with ring maps (likewise, R-modules with R-linear maps)
+			\item (More abstract) $(\mathbf{Z},\leq)$: objects are $\mathbf{Z}$ and a map $x\to y$ whenever $x\leq y$
+			\item A \emph{monoid} can be thought of as a category with a single object and some morphisms
+			\item A \emph{diagram} represents objects with vertices and morphisms with arrows (usually arrows representing the identity are omitted)
+		\end{itemize}
+	\end{example}
+	Idea: we can encode everything about an object by its relationship with other objects. 
+	\begin{definition}
+		In a category $C$, a map $f:X\to Y$ is an isomorphism if there exists $g:Y\to X$ with $g\circ f=\text{id}_{X}$ and $f\circ g=\text{id}_{Y}$.
+	\end{definition}
+	\begin{example}
+		Isomorphisms in Top are homeomorphisms, in Fin they are bijections, in Ab they are isomorphisms of groups, etc.
+	\end{example}
+	\begin{definition}
+		For categories $C,D$, a \emph{functor} is a map $F:\text{ob}(C)\to \text{ob}(D)$ and a map $\text{Hom}_{C}(X,Y)\to\text{Hom}_{C}(F(X),F(Y))$ that is compatible with composition. 
+	\end{definition}
+	\begin{example}
+		\begin{itemize}
+			\item Forgetful functors $\text{Top}\to\text{Set}$, $\text{Ab}\to\text{Set}$, $\text{Ab}\to\text{Gp}$, etc. 
+			\item Functors from a diagram to other categories (i.e., specifying an object for each vertex and a morphism for each arrow)
+		\end{itemize}
+	\end{example}
+	Returning to our slogan, we want to study functors from Top to Ab that 1 solve problems and 2 can be computed. 
+	
+	\begin{definition}
+		A functor $F$ is \emph{full} if the map $\text{Hom}_{C}(X,Y)\to\text{Hom}_{D}(F(X),F(Y))$ is surjective, and it is \emph{faithful} if that map is injective. 
+	\end{definition}
+	Thus, a fully faithful functor embeds $C$ as a subcategory of $D$. 
+	\begin{definition}
+		A functor $F:C\to D$ is an \emph{equivalence} if $F$ is fully faithful and $F$ is essentially surjective (i.e., $\forall d\in\text{ob}(D),\exists c\in\text{ob}(C)\text{ s.t. }F(c)\cong d$).
+	\end{definition}
+	An equivalence of categories admits an inverse, but this might require the axiom of choice to construct.  
+	
+	For any category $C$, for any object $c\in C$ we have functor $\text{Hom}_{C}(c,-)$ from $C\to\text{Set}$ that takes $c'\mapsto \text{Hom}_{C}(c,c')$ and takes $f:c'\to c''$ to $\varphi\mapsto \varphi\circ f$. We can think of this as a functor $C\to\text{Fun}(C,\text{Set})$. 
+		
+	Likewise, there is a contravariant functor $\text{Hom}(-,c)$, which we can think of as a functor $C\to\text{Fun}(C^{\text{op}},\text{Set})$.
+	
+	\begin{definition}
+		The functor category $\text{Fun}(C,D)$ has objects functors $C\to D$ and morphisms natural transformations $F\to G$. 
+	\end{definition} 
+	\begin{definition}
+		A natural transformation between functors $F:C\to D$ and $G:C\to D$ is for each object $c$ a map $F(c)\to G(c)$ such that for every  $c\to c'$ the following diagram commutes.
+		$$\begin{tikzcd}
+				F(c) \arrow[r] \arrow[d] & G(c) \arrow[d] \\
+				F(c') \arrow[r]          & G(c')         
+			\end{tikzcd}$$
+	\end{definition}
+	\begin{lemma}[Yoneda]
+		For any category $C$, the functor $F\to\text{Fun}(C^{\text{op}},\text{Set})$ taking $c\mapsto\text{Hom}_{C}(-,c)$ is fully faithful. 
+	\end{lemma}
+	The point is that to understand an object, it suffices to consider all the maps into it. But that's too much! This begs the question, is there a good sub-class of test spaces? Maybe... spheres? 
+	
+	The most basic question about a category is classification: what are the isomorphisms of $\text{ob}(C)$? E.g., for real finite-dimensional vector spaces, the answer is $\{\mathbf{R}^{n}\}_{n}$. Then, we might ask: what is the structure of the isomorphism? For real finite-dimensional vector spaces, it is $\text{GL}_{n}(\mathbf{R})$.
+	
+	However, for topology both these questions are far too intractable. So we need a weaker notion of equivalence. 
+	\begin{definition}
+		For $f,g:X\to Y$ in Top, $f,g$ are homotopic if there exists a map $H:X\times I\to Y$ such that  $H(x,0)=f(x)$ and $H(x,1)=g(x)$.
+	\end{definition}
+	That is, a one parameter family of maps $\gamma_{x}$ parameterized by $x\in\{0,1\}$. We may think of it un-rigorously as a continuous map $\tilde{H}:I\to\text{Hom}_{C}(X,Y)$ with $\tilde{H}(0)=f$ and $\tilde{H}(1)=g$, but the codomain is a set not a space. 
+	
+	If we think of Top not just as a category but as an enriched category, then $\text{Map}_T(X,Y)$ is a space and composition is continuous. We endow $\text{Map}_T(X,Y)$ with the compact-open topology: a subbase consists of, for all compact $K\subseteq X$ and open $U\subseteq y$, the set $\{f:f(K)\subseteq U\}$.
+	
+	In fact, the relationship between $I\xrightarrow{\tilde{H}}\text{Map}_T(X,Y)$ and $H\in\text{Map}_T(X\times I,Y)$ is the concept of an adjunction.
+	\begin{definition}
+		$f:X\to Y$ is a homotopy equivalence if $\exists g: Y\to X$ s.t. $f\circ g\simeq \text{id}_{Y}$ and $g\circ f\simeq \text{id}_{X}$.
+	\end{definition}
+	Consequences 
+	\begin{enumerate}
+		\item $\{S^n\}$ as test spaces are basically enough to detect homotopy equivalence 
+		\item There exist nice combinatorial models of spaces up to homotopy 
+	\end{enumerate}
+	
+	\section{Wednesday, September 15}
+	Haynes Miller has good notes on algebraic topology
+	
+	References for Category Theory 
+	\begin{itemize}
+		\item ``Categories in Context'' by Emily Riehl
+		\item ``Categories for the Working Mathematician'' (classic)
+	\end{itemize} 
+	We discussed the isomorphism of sets 
+	$$\theta: \text{Map}_{T}(X\times Y,Z)\cong\text{Map}_{T}(X,\text{Map}_{T}(Y,Z)) $$
+	taking $f$ to $x\mapsto f(x,-)$. We claim that $\theta$ is natural: that is, compatible with maps $X'\to X$ etc. 
+	\begin{definition}
+		Functors $F:C\to D$ and $G:D\to C$, are an \emph{adjunction} if there is a natural isomorphism $\text{Map}_{D}(F(x),y)\cong\text{Map}_{C}(x,G(y))$. Here, $F$ is the left adjoint and $G$ is the right adjoint. 
+	\end{definition}
+	Since we have a natural isomorphism $\text{Map}(Fx,Fx)\cong \text{Map}(x,GFx)$, there is a natural transformation $\text{Id}\to GF$ called the \emph{unit}. Similarly, there is a natural transformation $FG\to\text{Id}$ called the \emph{counit}. 
+	\begin{example}
+		Let $U:\text{groups}\to\text{sets}$ be the forgetful functor. Then $U$ is the right adjoint of a functor $F:\text{sets}\to\text{groups}$ which is the free group functor: 
+		$$\text{Map}_{\text{sets}}(S,UG)\cong\text{Map}_{\text{groups}}(FS,G) $$ 
+	\end{example}
+	\begin{definition}
+		A \emph{monad} is an endofunctor $M:C\to C$ with natural transformations $MM\to M$ and $\text{id}\to M$.
+	\end{definition}
+	There is an Endofunctor of sets $UF$ with the unit $\text{id}\to UF$. Then $$(UF)(UF)\cong U(FU)F\xrightarrow{counit}UF$$
+	Thus, we have a monad. Let $S$ is an algebra over this monad if $\mu:UFS\to S$ satisfies
+	$$\begin{tikzcd}
+		(UF)(UF)S \arrow[r] \arrow[d] & (UF)S \arrow[d] \\
+		(UF)S \arrow[r]               & S              
+	\end{tikzcd}$$
+	Thus, groups are algebras over the monad $UF$. Many people say category theory is ``to make simple things simple''; instead, we'll say that the goal of category theory is ``to make formal things formal''. 
+	
+	Now, we will turn to colimits and limits. Suppose $X,Y$ are spaces with $A\subset X$, $A\subset Y$. To glue together $X$ and $Y$ over $A$, we might take 
+	$$(X\sqcup Y)/[\text{im}(A)\text{ in }X,Y] $$
+	We want to think about gluing not explicitly but categorically in terms of maps. We will construct $X\sqcup_{A}Y$ as a colimit, i.e., the following pushout diagram:
+	$$\begin{tikzcd}
+	A \arrow[r] \arrow[d]   & X \arrow[d] \arrow[rdd]         &   \\
+	Y \arrow[r] \arrow[rrd] & X\sqcup_{A}Y \arrow[rd, dashed] &   \\
+	&                                 & Z
+	\end{tikzcd}$$
+	It is unique up to unique isomorphism. A special case is the coproduct is the colimit of the following diagram
+	$$\begin{tikzcd}
+	\emptyset \arrow[r] \arrow[d] & X \arrow[d] &   \\
+	Y \arrow[r]                   & X\sqcup Y   
+	\end{tikzcd}$$
+	Another special case is the quotient $X/A$ given by the diagram: 
+	$$\begin{tikzcd}
+	A \arrow[r] \arrow[d] & X \arrow[d] \\
+	* \arrow[r]           & X/A        
+	\end{tikzcd}$$
+	Limits are dual. Consider the fiber product 
+	$$\begin{tikzcd}
+	X\times_{A}Y \arrow[r] \arrow[d] & Y \arrow[d] \\
+	X \arrow[r]                      & A          
+	\end{tikzcd}$$
+	This is the product of $X$ and $Y$ with compatibility requirements given by $A$. If $A$ is $*$, this is just the cartesian product. Note that $\emptyset$ and $*$ play distinguished roles (initial and terminal objects respectively).
+	
+	Now, we will look at the relationships of colimits and limits with functors (adjunctions). 
+	\begin{proposition}
+		Left adjoints preserve colimits and right adjoints preserve limits. 
+	\end{proposition}
+	Given a diagram $D$ whose colimit we want to take, we can think of the colimit as a functor 
+	$$\text{Fun}(D,\text{Top})\xrightarrow{\text{colim}}\text{Top} $$
+	Let us return to our adjunction
+	$$\text{Map}(X\times Y,Z)\cong\text{Map}(X,\text{Map}(Y,Z)) $$
+	We wish this were an isomorphism in $\text{Top}$, but there are some very bad spaces in $\text{Top}$ that could cause problems. 
+	
+	Instead, we work with a ``convenient category of spaces''. This will be a distinguished subcategory of $\text{Top}$ such that the above adjunction is always a homeomorphism.
+	
+	We want a category of spaces such that $f:X\to Y$ is continuous iff $f|_{K}$ is continuous for $K\subseteq X$ compact Hausdorff.  
+	\begin{definition}
+		A space $X$ is \emph{weak Hausdorff} if for any continuous $f:K\to X$ where $K$ is a compact Hausdorff space, $f(K)$ is closed. 
+	\end{definition}
+	\begin{definition}
+		A subset $A\subset X$ is compactly closed if when $g:K\to X$ with $K$ compact Hausdorff, then $g^{-1}(A)$ is closed. 
+	\end{definition}
+	\begin{theorem}
+		The category of weak Hausdorf $k$-spaces is a convenient category of spaces.
+	\end{theorem}
+	we call this category $U$. This is also known as a compactly generated space. There are notes by Strickland which use different terminology. 
+	
+	Question: how do we form limits and colimits in $U$? 
+	
+	Most familiar spaces are in $U$ --- e.g., all locally compact Hausdorff spaces. 
+	
+	We have an inclusion functor $U\to\text{Top}$. There are two functors in the opposite direction: ``$k$-ification'', which is friendly, and ``weak Hausdorffication'', which is bad. 
+	\begin{lemma}
+		Let $A\subseteq X$ be a closed inclusion, and $X\to Y$ with $X,Y\in U$. Then the pushout colimit $X\sqcup_{A}Y$ in $\text{Top}$ is also in $U$. The same is true for $F:\mathbf{N}\to U$. 
+	\end{lemma} 
+	Now we return to homotopies. Recall the definition of a homotopy between $f,g:X\to Y$. By our adjunction, this is the same data as a continuous map $I\to\text{Map}(X,Y) $, i.e., a path in $\text{Map}(X,Y)$ from $f$ to $g$. 
+	
+	A homotopy is also a map $X\to\text{Map}(I,Y)$. 
+	
+	If $f\sim g$ and $g\sim h$, then $f\sim h$, as seen by breaking up $I$ in half and attach the two homotopies. This is the point of departure of the algebraic theory of loop spaces. But for now, we just need to know that homotopy is an equivalence relation on maps. 
+	
+	Homotopies also satisfy $f\sim f'\implies hf\sim hf'$, so we really have a category of homotopies called $\text{Ho}(U)$. 
+	\begin{lemma}
+		If $X,Y$ are homotopy equivalent in $U$, then $X,Y$ are isomorphic in $\text{Ho}(U)$. 
+	\end{lemma}
+	If $f:X\to Y$ and $g:Y\to X$ have $fg\simeq\text{id}_{Y}$ and $gf\simeq\text{id}_{X}$. 
+	
+	In the beginning, we said we are interested in functors 
+	$$\begin{tikzcd}
+	F:U \arrow[r] \arrow[d] & \text{Ab} \\
+	\text{Ho}(U) \arrow[ru] &          
+	\end{tikzcd}$$ 
+	Question: why not just work with $\text{Ho}(U)$? The problem is that some of our constructions don't exist in that category. E.g., the interval is homotopy equivalent to a point, but $D^{1}\sqcup_{S^{0}}D^{1}=S^{1}$ and $*\sqcup_{S^{0}}*=**$, and a circle is not homotopy equivalent to two points. 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+\end{document}
