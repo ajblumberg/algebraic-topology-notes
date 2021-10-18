@@ -34,7 +34,7 @@
 \newtheorem*{exercise}{Exercise}
 
 \title{Algebraic Topology Notes}
-\author{Amal Mattoo}
+\author{Amal Mattoo, Carson Teitler}
 
 \begin{document}
 	\maketitle 
@@ -236,8 +236,101 @@
 	\text{Ho}(U) \arrow[ru] &          
 	\end{tikzcd}$$ 
 	Question: why not just work with $\text{Ho}(U)$? The problem is that some of our constructions don't exist in that category. E.g., the interval is homotopy equivalent to a point, but $D^{1}\sqcup_{S^{0}}D^{1}=S^{1}$ and $*\sqcup_{S^{0}}*=**$, and a circle is not homotopy equivalent to two points. 
+	\section{Monday, October 4th, 2021}
+		In addition to telling us things about math, we should perhaps discuss some other things. He will start recommending restaurants periodically. This time, Barney Greengrass (87th and Amsterdam)
+	\section{CW Complexes}
+	A CW complex is the colimit over $n$ of $X_n$, where we have a filtration \begin{center}
+		\begin{tikzcd}
+		X_0\arrow[r]&X_1\arrow[r]&\dots \arrow[r]&X_n\arrow[r]&\dots
+		\end{tikzcd}
+	\end{center}
+	And $X_n$ is produced as the pushout of \begin{center}
+		\begin{tikzcd}
+		\bigsqcup S^{n-1} \arrow[r]\arrow[d]& X_{n+1}\arrow[d]\\
+		\bigsqcup D^n \arrow[r] & X_n
+		\end{tikzcd}
+	\end{center}
+	A map of CW complexes $f:X\to Y$ is cellular if $f(X_n\subseteq Y_n)$. This is a filtration preserving map. We will see that any map $f:X\to Y$ where $X$ and $Y$ are CW is homotopic. to a cellular map. This is not a tremendous restriction, but nonetheless it is not true for all maps. 
 	
-	\section{Wednesday, October 6th 2021}
+	The category of CW complexes we typically work with is \[\begin{split}
+	\text{objects}&=\text{CW complexes}\\
+	\text{morphisms}&=\text{Cellular maps}
+	\end{split}
+	\]
+	CW Complexes are Hausdorff and are compactly generated weak Hausdorff. This is an element and they live in our convenient category of spaces which we already discussed. One thing we have been silent about is the method of topologization. We can give these structures the "weak topology" where $A$ is open if $A\cap X_n$ is open for each $X_n$, and we give the $X_n$ filtration the union topology. 
+	
+	The category of complexes is an algebraic model for homotopy theory. Perhaps the slogan has been ``we can do homotopy theory in CW complexes, i.e. Ch($R$)" We will do an analogue of CW (cellular) theory inside of Ch($R$). In Ch($R$) we need spheres and discs. 
+	
+	Recall, we have cylinders in Ch($R$). It was $I$ with two zero simplices and a $1$ simplex such that $\partial(I)={1}-{0}$ (remember, these are the generators of a free complex). 
+	
+	How do we have a cone? $M\otimes I$ is a cylinder. How to we make a cone? $(M\otimes I)/(M\otimes \{1\})$ is the ``cone on $M$." $I(M)_n=M_{n-1}\oplus M_n$ gets $(x,y)$ and $(dx,dy-x)$. (Chain homotopic to $0$, of course it is, it's a cone.)
+	
+	We do we want the cone? A cone is a proxy of a disk. 
+	\\\\
+	Now what do we do for spheres? This is $R$ in dimension $n$ for $S^n$.  Natural inclusion $S_R^n \to CS_R^n$ (base of cone). A CW complex in Ch($R$).
+	\begin{center}
+		\begin{tikzcd}
+		\bigoplus S^n_R \arrow[r,"\alpha"] \arrow[d]&X_n\arrow[d]\\
+		\bigoplus CS_R^n \arrow[r] & X_{n+1}
+		\end{tikzcd}
+	\end{center}
+	We are making something out of free modules that is "flat" for tensors. It preserves quasi-isomorphisms. We are doing a union of pushouts. 
+	
+	\[Z\otimes M=Z\otimes (\text{colim }_{n\to\infty} M_n)\cong \text{colim}_{n\to\infty}(Z\otimes M_n)\]
+	
+	If we grade our algebra all the way down $\mathbb{Z}$ for all of $\mathbb{Z}$ then $S_R^{n}\otimes S_R^{-n}=S^0$ which is the unit. Therefore, in the algebraic sense, the spheres are shifts up and down. Topologically there is not a clear inverse. We see this $Z\otimes S^n\otimes S^{-n}\cong X$. 
+	
+	If we have $X\to CX$ we can take the quotient \begin{center}
+		\begin{tikzcd}
+		X\arrow[r] &CX\arrow[r]&CX/X
+		\end{tikzcd}\\
+		\begin{tikzcd}
+		\dots\arrow[r]&H_n(X)\arrow[r]&0\arrow[r]&H_n(X/X)\arrow[r,"\cong"]&H_{n+1}(X)\arrow[r]&0\arrow[r]&\dots
+		\end{tikzcd}
+	\end{center}
+	
+	\subsection{A digression on topology and based spaces}
+	$\text{Top}_\ast$ is the category of based spaces, $(X,\ast)$. 
+	\begin{center}
+		\begin{tikzcd}
+		X\arrow[r] &Y\\
+		\ast_X\arrow[u]\arrow[r,"\cong"] & \ast_Y \arrow[u]
+		\end{tikzcd}
+	\end{center}
+	which takes base points to base points in all morphisms. 
+	
+	We also have a functor from Top to $\text{Top}_\ast$ which takes $X$ to its one point compatification with the one point as the base point and a forgetful map $U$. This pair is an adjunction\[
+	((-)_+,U) \text{ is an adjunction} 
+	\]
+	$Top_*$ is the category of algebras over $U(-)_+$ in Top.  (Monad)
+	
+	\subsection{Returning to Spaces}
+	Top is a symmetric monoidal category, specifically under the cartesian product. The Cartesian Product is a functor $\times:$ Top $\times$ Top $\to$ Top
+	
+	What about Top$_\ast$.  $X\wedge Y$ i.e. $X\times Y/X\vee Y$ where $X\vee Y$ is defined as \begin{center}
+		\begin{tikzcd}
+		\ast\arrow[r] \arrow[d]& X\arrow[d]\\
+		Y\arrow[r] & X\vee Y
+		\end{tikzcd}
+	\end{center}
+	which essentially collapses $X\times \ast$ and $\ast\times Y$. A reason to desire this instead of just naively making the point of both base points as the basepoint is \[
+	S^n\wedge S^m\cong S^{n+m}
+	\]
+	
+	$\Sigma X=CX/X\cong S^1\wedge X$. 
+	
+	If $X$ is CW, $S^n\wedge X$ shifts the cells, and it shifts homology by $n$. We don't have an inverse here, though, unlike the chain complexes. It will turn out that in some sense there is an inverse. The candidate inverse is what we might write as $\mathcal{N}^n(X)=\text{Map}(S^n,X)$. This is sense $\text{Map}_{\text{Top}_\ast}(S^n\times X, Y)\cong \text{Map}_{\ast}(X,\text{Map}_{\text{Top}_\ast}(S^n,Y))$
+	\subsection{New CW complexes from old}
+	If $A$ is a subcomplex, $X/A$ is a subcomplex.  If $X, Y$ are complexes, then $X\times Y$ is a complex and the $n$ cells are $p$ cells of $X$ and $q$ cells of $Y$ where $p+q=n$> 
+	
+	Now we will explain some examples of CW complexes.  The examples we will do is some basic ones and then we will do $\mathbb{C}\text{P}^\infty$, Grassmanians, manifolds, $\mathbb{R}\text{P}^\infty$. 
+	\begin{enumerate}
+		\item Any finite set (any discrete set). 
+		\item Any graph (verticles are $0$ cells and edges are $1$ cells). Clustering is the 1-skeleton of a CW complex over your data.
+		\item $\mathbb{R}^n$ could have a lattice point structure and integers and fill it in with cells. 
+		\item $S^n$ can smash the boundary of an n-cell down to a $0$ cell. There is additionally gluing hemispheres together are their radial belts. 
+	\end{enumerate}
+	\section{Wednesday, October 6th, 2021}
 		The restaurant guidance of the day is suggesting Murray's Sturgeon (``neighbourhood place"), Sadelle's in Soho (eh, it's fancy waiters with bagels and rich people in suits, its a strange vibe), Zabar's (``fun for other reasons"), Russ and Daughters (``other famous New York deli"). This will conclude the opinions on smoked fish. They all get their fish from Acme Fish except, possibly, for Sadelle's.
 	
 	Today, we will discuss the following topics:
@@ -598,6 +691,148 @@
 	$[X,Y]$ is a set. $[\Sigma X, Y]$ is a group. $[\Sigma^2 X, Y]$ is a group, and it will continue to hold for $[\Sigma^n X, Y]$ for $n\geq 2$. Maps from $\Sigma^2 X\to Y$ is homeomorphic to maps from $X$ to $\Omega^2 Y$. Then $\Omega^2 X \to X$ is the same as the set of all maps form the square to $X$ which takes $\partial I^2$ to the basepoint. What's the homotopy? It's called the ``spin the wheel homotopy" for $\gamma_1\ast \gamma_2$ and $\gamma_2\ast \gamma_1$. Therefore homotopy classes of maps on the $I^2$ commute, so $[\Sigma^2 X, Y]$ is an Abelian group. 
 	
 	There are some unsettling facts here. Going from $0$ to $1$ loop took us from sets to groups, which is a vast jump (algae has srtarted walking on land) and then $1$ to $2$ goes to an Abelian group. Then after that we get nothing else. It increases wildly. This is the beginning of the theory of E-N Algebras
+		Culinary indoctrination:
+	B+H Diary, Veselka, Blue + Gold. B+H Dairy is a classic Dairy restaurant, the Blue + Gold is a bar, and Veselka is a 24 hour diner.
 	
+	Culinary questions: Food from city states or near city states. Any places that are good for Taiwanese or Singaporean food
+	
+	Long exact sequences of a cofiber sequence \begin{center}
+		\begin{tikzcd}
+		X\arrow[r] \arrow[d] &Y\arrow[d] \\ \ast \arrow[r] &Y/X
+		\end{tikzcd}
+	\end{center}
+	Then $Y/X$ has a universal property with $Y\to Y/X$ in \begin{center}
+		\begin{tikzcd}
+		X\arrow[rr]\arrow[dr] && Y/X\arrow[dl]\\
+		&Y
+		\end{tikzcd}
+	\end{center}
+	
+	Remember, we introduced $Cf$ as a homotopical proxy for $Y/X$:
+	
+	\begin{lemma}{1}
+		If $x\rightarrowtail Y$ is a cofibration then $Y/X\simeq Cf$
+	\end{lemma}
+	\begin{proof}
+		\begin{center}
+			\begin{tikzcd}
+			X\arrow[r] \arrow[d]&CX\arrow[d]\\
+			Y\arrow[r] & Cf
+			\end{tikzcd}
+		\end{center}
+		then $Y/X\cong Cf/CX\simeq Cf$
+	\end{proof}
+	
+	But what is the universal property of $Cf$? \begin{center}
+		\begin{tikzcd}
+		X\arrow[r] & Y \arrow[r] & Cf
+		\end{tikzcd}
+	\end{center}
+	This is null homotopic \begin{equation*}
+	\begin{split}
+	X\times I &\to Cf\\
+	(x,t)&\mapsto (\ast,t)
+	\end{split}
+	\end{equation*}
+	
+	\begin{center}
+		\begin{tikzcd}
+		X\arrow[r] &Y \arrow[d] \\&Z
+		\end{tikzcd}
+		is null homotopic if and only if \
+		\begin{tikzcd}
+		X\arrow[r] \arrow[dr]& Y \arrow[r] \arrow[d]&Cf\arrow[dl,dashrightarrow]\\
+		&	Z
+		\end{tikzcd}
+	\end{center}
+	As an immediate consequence, given $Z$ and $X\to Y \to Cf$ has the exact sequence \[
+	[Cf,Z]\to [Y,Z]\to [X,Z]
+	\]
+	is an exact sequence of sets. 
+	
+	We can write two sequences
+	\begin{center}
+		\begin{tikzcd}
+		X\arrow[r] & Y \arrow[r] & Cf\arrow[r] & \Sigma X\arrow[r] & \Sigma Y \arrow[r] & C(\Sigma f)\arrow[r] & \Sigma^2X\arrow[r] &\Sigma^2Y\arrow[r] &\dots
+		\end{tikzcd}\\
+		\begin{tikzcd}
+		X\arrow[r] & Y \arrow[r,"g_0"]\arrow[r] & Cf\arrow[r,"g_1"] & Cg_0\arrow[r]&Cg_1\arrow[r]&\dots
+		\end{tikzcd}
+	\end{center}
+	Each term is the cofiber of the last, and so by this iteration it becomes clear that the second sequence gives rise to a long exact sequence when you apply $[-,Z]$. From the first sequence, we want to show that $[Cg_0,Z]\cong [\Sigma X,Z]$ and we want to show that there exists comparisons between the first sequence and the second which induce the same sequence on $[-,Z]$. Recall from last class that $[\Sigma X,Y]$ is a group and $[\Sigma^2 X,Y]$ is an Abelian group. 
+	
+	When considering iterated versions of this comparison, we can look at maps in $\Sigma^2 X$ and $\Sigma^2 f$ and these make a permutation
+	\begin{center}
+		\begin{tikzcd}
+		X\arrow[r] \arrow[d,equal]& Y \arrow[r]\arrow[d,equal] & Cf\arrow[r]\arrow[d,equal] & \Sigma X\arrow[r] & \Sigma Y \arrow[r] & C(\Sigma f)\arrow[r]\arrow[d] & \Sigma^2X\arrow[r]\arrow[d,"\tau"] &\Sigma^2Y\arrow[r] \arrow[d]&C(\Sigma^2f)\arrow[r]&\dots\\
+		
+		X\arrow[r] & Y \arrow[r] & Cf\arrow[r] & \Sigma X\arrow[r] & \Sigma Y \arrow[r] & C(\Sigma f)\arrow[r] & \Sigma^2X\arrow[r] &\Sigma^2Y\arrow[r] &C(\Sigma^2f)\arrow[r]&\dots
+		\end{tikzcd}\end{center}
+	This sequence on homotopy gives rise to the LES of a pair $(A,X)$
+	\begin{center}
+		\begin{tikzcd}
+		A\arrow[r,"f"]& X\arrow[r] &Cf\arrow[r]& \Sigma A\arrow[r] & \Sigma X\arrow[r]&\dots
+		\end{tikzcd}
+	\end{center}
+	Then we can get that \[
+	H_*(Cf)\cong H_*(Cf,CA)\cong H_*(X\times I, A\times I)\cong H_*(X,A)
+	\]
+	with the middle isomorphism by excision. 
+	
+	If $A\rightarrowtail X$ is a cofibration then $H_n(X,A)\cong H_n(X/A)\cong H_n(Cf)$. 
+	
+	As an aside, when you work in this context you get a lot of power that is homotopy invariant and we can use homotopy theory to solve our problems. On the other hand, it takes what you said and turns it into what the machinery thinks you wanted to say, but perhaps it doesn't say what you want it to say. From the perspective of this class homotopy is what we're studying, but often there's more important refined data that you want to keep. If you study manifolds or varities it is removing a lot of data to just studying it upto homotopy type. 
+	
+	We have been doing this in the context of the functor $[-,Z]$ since this is the relevant functor for the long exact sequence in homology. What about functors $[Z,-]$? Given a map $X\to Y$ can we form some kind of long exact sequence? We are now starting to follow up on our long intended 
+	
+	\begin{definition}
+		If $X$ is a based space then \[
+		\pi_n(X)=[S^n,X]
+		\]
+		Then we find that $\pi_0(X)$ is the path components, $\pi_1(X)$ is the fundamental group, and $\pi_n(X)$ are Abelian groups. 
+	\end{definition}
+	The Abelian group thing is very helpful, as there's a lot more known structure to Abelian groups. Homotopy groups are hard. Homology is pretty easy. We don't know what the homotopy groups of spheres are. 
+	\begin{definition}
+		$f:X\to Y$ is a weak equivalence if the induced map $\pi_nf:\pi_n(X)\to \pi_n(Y)$ is an isomorphism for all $n$. 
+	\end{definition}
+	We will eventually prove the following theorem
+	\begin{theorem}
+		If $f:X\to Y$ is a weak equivalence and $X,Y$ are CW complexes, then $f$ is a homotopy equivalence. 
+	\end{theorem}
+	As an aside, we can construct \textsf{Ho(Top)} by looking at CW complexes, category \textsf{D} and formally inverting to weak equivalences. This gives you a universal property through formal inversion. Functors out of CW complexes are functors out of \textsf{Ho(Top)}:\begin{center}
+		\begin{tikzcd}
+		\mathsf{Top}\arrow[rr]\arrow[dr]&&\mathsf{D}\arrow[dl]\\
+		& \mathsf{Ho(Top)}
+		\end{tikzcd}
+	\end{center}
+	The data of a weak equivalence involves the map $f$. It is not an abstract isomorphism of $f$. You have to have the map that induces the isomorphism of homotopy groups. There are examples of spaces with equal homotopy groups that are not homotopy equivalents. 
+	
+	As a question, is $\pi_*$ a homology theory, i.e. does it satisfy the Eilenberg-Steinrod axioms? Unfortunately the answer is no. 
+	
+	Suppose we relax the axiom that says that the value on a point is $\mathbb{Z}$ or $R$. (i.e. we generalize homology theories, other examples are topological k-theory or cobordism.) The value of any kind of theory like this is heavily constrained on spheres because of the suspension consequence of the axioms. That's just not true for homotopy groups. $\pi_1(S^1)=\mathbb{Z}$ and that's good but in general it is not the case that $\pi_n(S^k)$ is compatible with suspension. We know this for trivial reasons. Let's think about some things we know about homotopy groups. 
+	
+	\begin{lemma}{1}
+		$\pi_k(S^n)=0$ for $k<n$. This is in some sense a result of differential topology. It will miss something and you can pull out a point and contract the resulting plane. 
+	\end{lemma}
+	We don't actually know $\pi_n(S^k)$ for most pairs $(n,k)$. We will spend some time talking about $\pi_3(S^2)$ which is not compatible with any kind of Eilenberg Steinrod type axioms.  
+	
+	Can we turn $\{\pi_*(-)]\}$ into a homotopy theory formally? If we had LES associated to a map $f:X\to Y$ in $[Z,-]$ then we might hope to get something like a LES in $\pi_*$. 
+	
+	$[\Sigma X,Z]$ and $[Z,\Omega^n X]$ has $\pi_0(\Omega^n X)\cong \pi_n(X)$. This is a reminder of the origin of the algebraic structure on $\pi_n(X)$. Now we will dualize the story of cofibrations, i.e. fibrations. 
+	
+	Cofibrations were answering the question ``how should we take the quotient?" Now we will think about the dual, where $X$ and $Y$ are based and we have $f^{-1}(\ast)\to X\to Y$ fiber. 
+	\begin{center}
+		\begin{tikzcd}
+		F\arrow[r] \arrow[d] &X\arrow[d]\\
+		\ast \arrow[r] &Y
+		\end{tikzcd}
+	\end{center}
+	We get a fiber, which is the same question that we always ask. Is it the case that $F$ is homotopy invariant?  When is it?  The theory of fibrations will be when the fiber is a homotopy invariant. 
+	\begin{center}
+		\begin{tikzcd}
+		\ast \arrow[r] \arrow[d,equal] & Y&\arrow[l]X\\
+		\ast\arrow[r]& Y'\arrow[u,"cong"]&\arrow[l] X\arrow[u,"\cong"]
+		\end{tikzcd}
+	\end{center}
 
 \end{document}
