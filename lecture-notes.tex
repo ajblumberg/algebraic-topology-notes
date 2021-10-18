@@ -16,7 +16,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{subfigure}
-\input{Young.sty}
+%\input{Young.sty}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{claim}[theorem]{Claim}
@@ -237,13 +237,367 @@
 	\end{tikzcd}$$ 
 	Question: why not just work with $\text{Ho}(U)$? The problem is that some of our constructions don't exist in that category. E.g., the interval is homotopy equivalent to a point, but $D^{1}\sqcup_{S^{0}}D^{1}=S^{1}$ and $*\sqcup_{S^{0}}*=**$, and a circle is not homotopy equivalent to two points. 
 	
+	\section{Wednesday, October 6th 2021}
+		The restaurant guidance of the day is suggesting Murray's Sturgeon (``neighbourhood place"), Sadelle's in Soho (eh, it's fancy waiters with bagels and rich people in suits, its a strange vibe), Zabar's (``fun for other reasons"), Russ and Daughters (``other famous New York deli"). This will conclude the opinions on smoked fish. They all get their fish from Acme Fish except, possibly, for Sadelle's.
+	
+	Today, we will discuss the following topics:
+	\begin{itemize}
+		\item CW Structures on $\mathbb{RP}^n$ and $G_k(\mathbb{R}^n)$ 
+		\item classifying some vector bundles
+		\item If we have time, we will talk about the proof of excision. 
+		\item Likely on Monday, we could wrap up our discussion of homology and discuss homotopy groups. 
+	\end{itemize}
+	\subsection{Projective space}
+	$\mathbb{R}$P$^n$ is the space of 1-dimensional subspaces of $\mathbb{R}^2$. (generally quotient-ing out by the lines through the origin). Generally it is $S^n/(\mathbb{Z}/2\mathbb{Z})$. It's like the circle upto a sign.
+	
+	The CW structure on this is determined 
+	
+	\begin{center}
+		\begin{tikzcd}
+		S^n\arrow[r]\arrow[d]& \mathbb{R}\text{P}^n\arrow[d]\\ D^{n+1}\arrow[r] &\mathbb{R} \text{P}^{n+1}
+		\end{tikzcd}
+	\end{center}
+	And therefore $\mathbb{R}\text{P}^n$ has a single cell in dimensions $\leq n$. 
+	
+	There is a natural vector bundle that sits over $\mathbb{R}\text{P}^1$. 
+	\begin{center}
+		\begin{tikzcd}
+		F_\ell\arrow[d]&\\ E\arrow[d] \\\mathbb{R}\text{P}^1
+		\end{tikzcd}	
+	\end{center}
+	$E=\mathbb{R}\textbf{P}^1\times \mathbb{R};  \bigcup_{\sigma\in \mathbb{R}\text{P}^1}(\sigma,z)$ where $z\in \sigma$ and $E\to \mathbb{R} P^1$ has $(\ell,z)\to \ell$
+	$F_\ell=\pi^{-1}(\ell)$. \begin{itemize}
+		\item $F_\ell$ is a vector space
+		\item It is locally trivial 
+	\end{itemize}
+	if we have a map $X\to \mathbb{R} \text{P}^1$ then the following diagram makes a vector bundle
+	\begin{center}
+		\begin{tikzcd}
+		P\arrow[r]\arrow[d]&E\arrow[d]\\
+		X\arrow[r]&\mathbb{R} \text{P}^1
+		\end{tikzcd}
+	\end{center}
+	THe map $P\to X$ is the vector bundle of sorts.
+	There is a space $BO(n)$ such that there is a bijection between $[X,BO(n)]$ and the classes of $\mathbb{R}^n$ bundles on $X$. 
+	
+	$BO(n)$ is much less crazy than we might expect. We can compute the cohomology and homology. Homology is covariant and cohomology is contravariant so any cohomology class in $X$ gives rise to a cohomology class in $X$.  
+	
+	There's an idea here, which is a represented functor. The point is that if we have the category \textsf{Top} then we have a functor \textsf{Top} $\to$ \textsf{Set}.  $[-,Z]/\sim$ is homotopy maps of maps to Z. $[-,Z]$ turns out to be a homotopy functor, since this factors through the homotopy category, primarily because we made it by the equivalence quotient. 
+	\[
+	[B/Z,Z]\to [B,Z]\to [A,Z]
+	\]
+	
+	This might raise a suspicion or a question: is (co)homology represented? The answer will be yes. This will be one way we construct cohomology. The theorem is that $H^n(X,R)\cong (X, K(\mathbb{R}, n))/\sim$ where this is called a Eilenburg Mac Lane space.  The cohomology of these spaces will be interesting. Why is the cohomology interesting? Because it's endomorphisms. From the EIlbenberg Steinrod axioms, there is a relation between $H^n$ and $H^{n-1}$. 
+	
+	$C(X,X)$ is a monoid. The CW complex structure on $G_k(\mathbb{R}^n)$ is the real Grassmanian which is the space of $k$-planes in $\mathbb{R}^n$.  The point is a plane, and the fibre is the plane once we admit a vector bundle. There is a natural map from $G_k(\mathbb{R}^n)$ to $G_k(\mathbb{R}^{n+1})$. It's just adding a dimension (induced by taking $x$ to $(x,0)$.) Now we can just take the colimit to get $G_k(\mathbb{R}^\infty)$. This is what we want to think of as the classifying space of vector bundles of rank $k$. 
+	
+	This is a CW-complex. What is that CW structrure on $G_k(\mathbb{R}^n)$?
+	
+	\subsection{Grassmanians}
+	This has a beautiful combination structure where the CW structure comes in the form of Schubert cells. Why is there a CW structure? We have a plane. How do we represent it? Choose a basis for $\mathbb{R}^n$ and then think about the plane projecting onto that basis. Another way of saying that is to say if you think about that plane and you represent it as the row space of a matrix and you perform Gaussian elimination, that matrix will look like a real matrix with jagged leading ones. The numbers are parameterized by the rest of the matrix. 
+	
+	One way of doing this is to produce Schubert symbols. $\mathbb{R}^0\subseteq \mathbb{R}^1\subseteq \mathbb{R}^2\subseteq \dots \subseteq \mathbb{R}^n$.  $V$ is a $k$-dimensional subspace. Then, we get $V\cap \mathbb{R}^0\subseteq \mathbb{R}^1\cap V\subseteq \dots \subseteq V\cap \mathbb{R}^n$ starts at dimension $0$ and ends at dimension $k$. Therefore, $\dim(V\cap \mathbb{R}^m)+(0\text{ or }1)=\dim(V\cap \mathbb{R}^{m+1})$
+	
+	We can keep a map of when the dimension changes. We can write the dimension as $v=(0,1,1,2,3,4,\dots k)$, e.g. and then we can write this as $(s_1,s_2,\dots ,s_k))$ as the schubert symbol. Z$S_i$ is the index of the $I$th increment in dimension i.e. $s_1=v_1-v_0$, etc.
+	
+	The Schubert cell is homeomorphic to the interior of $D^\ell$ for some $\ell$. If we take the closure of that we get the disk. These are our cells. We can attach these cells to produce CW decomposition. 
+	
+	$V$ is the row space of some matrix, rank $k$ so it is a $k\times n$ matrix and it will look like \[
+	\begin{bmatrix}
+	\dots & \dots & 1 & 0 & 0 & 0 & 0 & 0 \\
+	\dots & \dots & \dots & \dots & 1 & 0 & 0 & 0 \\
+	\dots & \dots & \dots & \dots & \dots & 1 & 0 & 0\\
+	\dots & \dots & \dots & \dots & \dots & \dots & \dots & 1 
+	\end{bmatrix}
+	\]
+	where the dots can be any entry, and the staircase structure formed like this gives us the Schubert cells. Manifolds and nice varieties are CW complexes and in both cases the structures are very interesting. This is the subject of finding triangulations. It literally means a homeomorphism to a simplicial complex. 
+	
+	\subsection{Return to the proof of excision}
+	What is the statement of excision?
+	If we have \[
+	U\subseteq A \subseteq X
+	\] 
+	and $\overline{U}\subseteq A^\circ$. Then we will say that $H_n(X,A)\cong H_n(X-U,A-U)$ where we just delete $U$. Part of the point of this condition is that $X$ interacts with $A$ by reaching into the boundary of $A$, but it can't go past it, and so $U$ is insulated from anything $X$ can see in $A$.
+	
+	How are we going to prove this? The proof of this is related to an interesting subject, specifically it is related to the start of geometry measure theory.
+	\begin{definition}
+		$\sigma:\Delta^n\to X$ is \textit{small} relative to the excisive triple $(U,A,X)$ if either $\sigma(\Delta^n)\subset A$ or $\sigma(\Delta^n)\cap U=\emptyset$. 
+	\end{definition}
+	\begin{enumerate}
+		\item Small chains computer relative homology.
+		\item We can always represent a chain by small ones. 
+	\end{enumerate}
+	The first comment is that we can define $H_n^{\text{Small}}(X)$ and $H_n^{\text{Small}}(X.A)$ by using only the restriction of the singular chains to the small chains to form homology. There is an exact sequence \begin{center}
+		\begin{tikzcd}
+		H_n(A)\arrow[r]\arrow[d]&H_n^{\text{Small}}(X)\arrow[r]\arrow[d]&H_n^{\text{Small}}(X,A)\arrow[d]\\
+		H_n(A)\arrow[r] & H_n(X)\arrow[r] & H_n(X,A)
+		\end{tikzcd}
+	\end{center}
+	It will be interesting to look at comparisons between $H_n$ and $H_N^{\text{Small}}$
+	\begin{center}
+		\begin{tikzcd}
+		C_n(A-U)\arrow[r]\arrow[d]&C_n(X-U)\arrow[r]\arrow[d]&C_n(X-U,A-U)\arrow[d]\\
+		C_n(A) \arrow[r] & C_n(X)^{\text{small}}\arrow[r] & C_n(X,A)^{\text{small}}
+		\end{tikzcd}
+	\end{center}
+	The vertical arrows are inclusions by construction of the definition of a small chain.
+	
+	Now the point is that the map $C_n(X-U,A-U)$ to $C_n(X,A)$ induces an isomorphism on homology. This factors through $C_n^{\text{small}}(X,A)$
+	
+	Therefore we get \begin{center}
+		\begin{tikzcd}
+		C_n(X-U,A-U)\arrow[dr,"\cong"]\arrow[dd]&\\ & C_n^{\text{small}}(X,A)\arrow[dl]\\
+		C_n(X,A)&
+		\end{tikzcd}
+	\end{center}
+	The key claim is that $C_n^{\text{small}}(X)\to C_n(X)$ induces an isomorphism on homology.
+	
+	We will introduce what is called a ``subdivision" operator to chop up chains. We will take some nice cover of $X$ and localize the chain by cutting up $\Delta$ until you have nice piece. Let's discuss subdividing the standard simplex. (This idea has come up before)
 	
 	
+	Remember, we had the maps of the circle to itself as a simplicial complex. We know that $H_1$ is isomorphic to $\mathbb{Z}$
+	
+	This is in some way a proxy for thinking about homotopy and its ``size." Let's draw the pictures. 
+	
+	\section{Monday, October 11th 2021}
+	Proof of excsision for singular homology. This is the last of the axioms for Singular homology. The rest we've established.
+	
+	This involves an interesting construction called subdivision where $U\subseteq A\subseteq X$ where $\overline{U}\subseteq A^\circ$, then you have a natural inclusion from the relative homology of $H_n(X-U, A-U)\cong H_n(X,A)$. As a definition, if we have $\sigma:\Delta^n\to X$ is small (``relative to the pair (A,U)") if the image $\sigma(\Delta^n)\subseteq A$ or $X-U$. A chain $\tau$ is small if $\tau$ is a sum of small simplices. 
+	
+	We are interested in $C_n(X-U,A-U)\to C_n(X,A)$. This factors through the small simplices. Therefore we can get\begin{center}
+		\begin{tikzcd}
+		C_n(X-U,A-U)\arrow[rr]\arrow[dr, "(1)"]&&C_n(X,A)\\
+		&C_n^{\text{small}}(X,A)\arrow[ur,"(2)"]
+		\end{tikzcd}
+	\end{center}
+	The idea is to repeatedly create smaller simplices inside of $\Delta^n$. Each of these subdivisions live in a smaller part of $X$ than the original. Each time you cut it gets smaller, eventually it gets small enough. If we take the chain of the smaller simplices that sum to the large simplex, then they are the same thing but now it's a chain of small simplices. 
+	
+	Theorem: Any map rom $|X|\to |Y|$ where $X$ and $Y$ are simplicial complexes ($|X|$ and $|Y|$ are actual triangle gluing, $X$ and $Y$ are abstract data of triangle gluing). The geometric realization of $\tilde f$ is homotopic to $f$. This says two things of note. We asserted that simplicial complexes are a model for spaces. That means two things. If $X$ is a space, there exists a complex $Y$ such that $|Y|\simeq X$. Additionally, homotopy classes of maps from $X$ to $Y$ can be represented by simplicial maps from $sd_n: X\to Y$. 
+	\begin{center}
+		\begin{tikzcd}
+		C_n(A-U)\arrow[r]\arrow[d] & C_n(X-U)\arrow[r] \arrow[d]&C_n(X-U,A-U)\arrow[d,"(1)"]\\
+		C_n(A)\arrow[r] \arrow[d,"\cong"]& C_n^{\text{small}}(X)\arrow[r] \arrow[d] & C_n^{\text{small}}(X,A) \arrow[d,"(2)"]\\
+		C_n(A) \arrow[r]& C_n(X) \arrow[r]& C_n(X,A)
+		\end{tikzcd}
+	\end{center}
+	Diagram commutes, rows are short exact sequences. To deduce excision it suffices to check that $C_n^{\text{small}}(X)\to C_n(X)$ is an equivalence. 
+	
+	Now construct an operator $s.d.C_n(X)\to C_n(X)$, with the two following properties:
+	\begin{enumerate}
+		\item Simplices of $s.d.(X)$ are $\leq \left(\dfrac{n}{n+1}\right)\left|\text{simplices of X}\right|$ 
+		\item  s.d. is chain homotopic to the identity.
+	\end{enumerate}
+	The Lebesgue number relative to a metric space $X$ and an open cover $U_\alpha$ of $X$ is $\epsilon$ such that all $B_\epsilon(x)\subset U_\alpha$ for some $\alpha$. Any compact metric space has a nonzero Lebesgue number. In particular, $\Delta^n$ is a compact metric space, and so for any open cover it has a nonzero Lebesgue number. 
+	
+	If we let $W_\alpha$ cover $A$ and $B_\alpha$ cover $X-U$. If we look at $\sigma:\Delta^n\to X$ and $\{\sigma^{-1}(W_\alpha)\}\cup \{\sigma(V_\alpha)\}$ This open cover has a Lebesgue number so that all balls smaller than $\epsilon$ are contained in an element of that cover. If we look at $s.d._N$ where $N$ is chosen large enough that that the max dimensino of a simplex is $s.d._N(\sigma)<\epsilon$. Notice a shrewd thing happening here. The singular homology is probing our space with test maps from a nice test space. We are saying we can understand $X$ by probing it with placing triangles into it. This argument is fine. This is buying you this argument though. $X$ is an awful space. It might not be metrizable. It could be an abominable point set construction, but we can still calculate these things that deal primarily with compact metric spaces through this set up. 
+	
+	How do we subdivide a chain? We want a subdivision $s.d.:C_n(X)\to C_n(X)$ but we also want the subdivision to be ``natural" in the following manner. For a map $f:X\to Y$ we want \begin{center}
+		\begin{tikzcd}
+		C_n(X)\arrow[r,"s.d."]\arrow[d,"f"] & C_n(X) \arrow[d,"f"]\\
+		C_n(Y)\arrow[r,"s.d."]&C_n(Y)
+		\end{tikzcd}
+	\end{center}
+	Inductively we will divide a point into a point, and then place a point at the barycenter, and then connect everything by whatever boundary is required. E.g. Barycenter uf $\frac{1}{n+1}\sum_{i=0}^n e_i$. 
+	
+	s.f. of a n-simplex $\sigma$ by $\Sigma$ of  simplices formed by connecting the barycenter $b(\sigma)$ to $s.d.(\partial \sigma)$. How do we produce the chain homotopy? It's the same as the argument for the product. You define all the $0$-simplices. We can extend by computing what the boundary would be and using the fact that $H_i(\Delta^n)=0$ to lift. 
 	
 	
+	It is of course patently obvious that $|s.d._n\Delta^n|\simeq |\Delta^n|$. We should have the picture in mind here
 	
 	
+	In the coming weeks we will be covering \begin{itemize}
+		\item Cofirbrations
+		\item fibrations
+		\item homotopy groups
+		\item exact sequences of cofiber, fiber
+	\end{itemize}
+	Property $f:A\to X$ is a cofibration then $C:\simeq X/A$ (called $f A\rightarrowtail X$)
 	
+	$f:X\to Y$ $Mf$ mapping cylinder $X\to (X\times I) \cup_f Y)$
+	
+	This i s always a cofibration.  Any map $f:X\to Y$ can be factored \begin{center}
+		\begin{tikzcd}
+		X\arrow[r,rightarrowtail] \arrow[rr,bend right=40,"f"]& Mf \arrow[r,"\cong"] & Y
+		\end{tikzcd}
+	\end{center}
+	Now suppose $X$ is a space and $x\in X$ then $x:\ast\to X$ is a nondegenerating at (missed this part)
+	
+	Can always arrange for $X$ to be nondegenerated based by drawing out a whisker from the space.
+	
+	\begin{definition}
+		A map $f:X\to Y$ is a cofibration of $f$ if it satisfies the homotopy extension property (HEP) i.e.
+	\end{definition}
+	\begin{center}
+		\begin{tikzcd}
+		A\arrow[rr,"\text{id}\times \{0\}"] \arrow[dd,"f"]&& A\times I\arrow[dd, "f\times \text{id}"]\arrow[dl,"h"]\\
+		& Z & \\
+		X\arrow[ur,"\ell"]\arrow[rr,"\text{id}\times \{0\}"] && Y 
+		\end{tikzcd}
+	\end{center}
+	And we can take a pushout $\tilde h$ for any $z$ so that it fits such a diagram.  i.e. we can extend the homotopy $h$ to $\tilde h$ and it suffices to check on $Z=Mf$ (The universal property so that $Mf\to Z$)
+	
+	There's also the diagram \begin{center}
+		\begin{tikzcd}
+		A \arrow[rr] \arrow[dd]& & A\times I \arrow[dd]\arrow[dl,"h"]\\
+		& Mf & \\
+		X\arrow[ur]\arrow[rr] && X\times I
+		\end{tikzcd}
+	\end{center}
+	For example, check that $X\to Mf$ is a cofibration  $(X\times Y)\cup _f  Y$. This is a slightly stronger notion than being a closedf inclusion. Next time we will give a criterion for detecting cofibrations. 
+	
+	Where are we going with this? We want to prove these statements we keep asserting about the homotopy invariance of the quotients. We will think of the sequence $X\to Y$ (cofibration) to $Y/X$ as being a short exact sequence of spaces. 
+	
+	\begin{center}
+		\begin{tikzcd}
+		\text{[}-,X\text{]}\arrow[r] &\text{[}-,Y\text{]}\arrow[r]& \text{[}-,Y/X\text{]}\\
+		\text{[}Y/X,-\text{]}\arrow[r] & \text{[}Y,-\text{]}\arrow[r] & \text{[}X,-\text{]}
+		\end{tikzcd}
+	\end{center}
+	
+	
+	\section{Wednesday October 13th, 2021}
+		Culinary indoctrination: 
+	At various points in the history of New York City, the percentage of immigranrts in NYC has exceeded 50 percent. We've recently been covering the immigrant waves of the early 1900s and late 1800s. Notes on New York Pizza:
+	
+	Do not buy pizza that costs less than \$3. It will not be made with real cheese. Even if you are a disparate grad student, don't do this.
+	
+	There are a handful of pizza restaurants that are very old with coal ovens. Many of these places aren't actually good. The ones worth going to are Di Fara (Midwood / Borough Park) and Totonno's which is in Coney Island. The Di Fara pizza guy is old so you should go before he dies. There are a bunch of places in Greenwich Village. All of them are terrible. There are places in closer brooklyn that are fine. This is explicitly for the table-set sit down sort of things. 
+	
+	New Jersey has a distinctive pizza style which used to all be in Trenton. They are now in a shopping center and the two worthy ones are Delorenzo's and one other one. They're both in the Robinsville shopping center. 
+	
+	
+	\subsection{Cofibrations}
+	Remember we have a map $f:A \to X$ and a map $g:X\to Y$ then the data you are given is 
+	\begin{center}
+		\begin{tikzcd}
+		A\arrow[dd,"f"]\arrow[rr,"\text{id}\times 0"] && A\times I \arrow[dl, "h"] \\
+		& Y & \\
+		X\arrow[ur, "g"]
+		\end{tikzcd}
+	\end{center}
+	is given then you can extend this homotopy from $A$ to the rest of $X$,  in the following manner.
+	\begin{center}
+	\begin{tikzcd}
+	A\arrow[dd,"f"]\arrow[rr,"\text{id}\times 0"] && A\times I \arrow[dl, "h"] \arrow[dd,"f\times \text{id}"]\\
+	& Y & \\
+	X\arrow[ur, "g"]\arrow[rr,"\text{id}\times 0"] & & \arrow[ul, "\tilde h"]  X\times I
+	\end{tikzcd}
+\end{center}
+	Note, $\tilde h$ is not unique
+	
+	As examples, we can take $\emptyset \to X$ and $X\to Y$ homeomorphism. 
+	
+	As another example, if we have a smooth manifold with boundary, $\partial M\rightarrowtail M$ is a cofibration (collars). 
+	\begin{theorem}
+		Cofibrations are stable under cobase change.
+		\begin{tikzcd}
+		A\arrow[r]\arrow[d,rightarrowtail] &B\arrow[d,rightarrowtail] \\ X \arrow[r] & X\sqcup_A B
+		\end{tikzcd}
+		with cofibration $f$ and $g$ as a map then $B\to X\sqcup_A B$ is a cofibration. 
+	\end{theorem}
+	
+	Similarly, we can use the pushout to construct this map with the following diagram \begin{center}
+		\begin{tikzcd}
+		A \arrow[dr]\arrow[rrrr] \arrow[dddd] &&&& A\times I \arrow[dl]\arrow[dddd] \\
+		& B \arrow[rr]\arrow[dd] & & B\times I \arrow[dl]\arrow[dd]\\
+		& & Z & & \\
+		& X\sqcup_A B\arrow[rr] \arrow[ur] & & X\sqcup_A B\times I\arrow[ul, "\tilde h_2"]\\
+		X\arrow[rrrr] \arrow[ur]&&&& X\times I\arrow[uull, dashrightarrow , bend right = 40, "\tilde h_1"]
+		\end{tikzcd}
+	\end{center}
+	Where the existence of $\tilde h_2$ is a pushout construction. 
+	
+	A consequence of this is that if we have the pushout \begin{center}
+		\begin{tikzcd}	\coprod S^n \arrow[r] \arrow[d,rightarrowtail]& X \arrow[d,rightarrowtail] \\
+		\coprod D^{n+1}\arrow[r] &X_{n+1}
+		\end{tikzcd}
+	\end{center}
+	This implies that $A\coprod B \rightarrowtail X\coprod Y$ is a cofibration which implies that $\text{colim} X_n \simeq \text{hocolim} X_n$
+	
+	Then, to test if $f:A\to X$ is a cofibration, it suffices to look at the ``universal test object" Mf, which is the mapping cylinder. We have our diagram again \begin{center}
+		\begin{tikzcd}\label{MapCylCof}
+		A \arrow[rr]\arrow[dd] && A\times I \arrow[dd]\arrow[dl]\\
+		& Mf &\\
+		X\arrow[rr]\arrow[ur] && \arrow[ul,dashrightarrow,"h"]X\times I
+		\end{tikzcd}
+	\end{center}
+	For any other test object $Z$, the universal property of the pushout which controls the construction of the mapping cylinder give sus a map $Mf \to Z$ and so we can always construct our homotopy map like this. (pushout below $Mf$).
+	
+	Which is to say we always have the map \[
+	\ell:Mf\to X\times I, x\mapsto (x,0), (a,t)\mapsto (a,t)
+	\]
+	
+	Then there is the characterization of cofibrations $X\times I \to Mf\to X\times I$ then you get $X\sqcup_f (A\times I)$ so that we get $X\coprod_f(A\times I)\to X\times I$ is $h_0$ on $X$ and $f$ on $A\times I$. Then $X\times I$ retracts onto $Mf$. 
+	
+	Then we have a composite\begin{center}
+		\begin{tikzcd}
+		Mf\arrow[r,"\ell"] \arrow[rr,bend right = 40,"\text{id}"]&X\times I \arrow[r,"h"] &Mf
+		\end{tikzcd}
+	\end{center}
+	This exhibits $Mf$ as a retract of $X\times I$. $\ell$ always exists by pushout construction. The existence of $h$ for the map to be a retract is what determines whether something is a cofibration. 
+	
+	Then, we can find a criterion for finding cofibrations. 
+	\begin{definition}
+		A pair, $(X,A)$ is an NDR pair if there exists a function $U:X\to [0,1]$ such that $U^{-1}(0)=A$ and there is a homotopy $h:X\times I\to X$ such that $h(x,0)=x$, $h(a,t)=a$ and $h(x,1)\in A$. for $x$ such that $u(x)<1$. This data is saying we have a manner of parameterizing families of shells of points in $X$. The homotopy fixes $A$ at every point and starts at $X$ at the end $X$ is inside $A$.
+	\end{definition}
+	
+	As a proposition, $(X,A)$ is an NDR pair if and only if $A\rightarrowtail X$ is a cofibration. 
+	
+	Suppose we have a cofibration $A\rightarrowtail X$. If we project $\pi_1 Mf\to X$ and $\pi_2 Mf\to I$, we can specify that $U(x)=\max_t(t-\pi_1(H(x,t))$ and $H(x,t)=\pi_1(H(x,t))$. This is a map from $X\times I\to X$. 
+	
+	We will show that NDR implies cofibration, the other direction will be an exercise. You use the homotopy you were given to build H.
+	
+	\subsection{A digression on Base Points}
+	So far, this has been unbased. We cna just as easily talk about the based variant which is the same extension condition using based spaces. There are a couple of things that are a different in that context and worth mentioning. 
+	
+	Remember, $\mathsf{Top}_*$ has the wedge product $\wedge$ as the analogue of the cartesian product. There are natural homeomorphisms 
+	$\mathsf{Map}_{\mathsf{Top}_*} \cong \mathsf{Map}(X,\mathsf{Map}(X,Y))$ 
+	
+	We can make the mapping cylinder out of $X\wedge I_+$ is the cylinder and $X\wedge I$ is the based cone. 
+	
+	Reminder, \[
+	X\wedge Y =X\times Y/\left(X\times \ast \right)\cup (\ast \times Y)
+	\]
+	Additionally, $X_+\wedge Y^+\cong (X\wedge Y)_+$. Now, for cofibration sequences, suppose we have
+	\begin{center}
+		\begin{tikzcd}
+		X\arrow[r,"f"]& Y \arrow[r] & Cf \arrow[r] & \Sigma f \arrow[r] & \Sigma Y \arrow[r] & C(\Sigma f)\cong \Sigma Cf \arrow[r] & \Sigma^2 X\arrow[r] &...
+		\end{tikzcd}
+	\end{center}
+	This is a proxy of exact sequences. On the homotopy classes of maps this is an exact sequence. 
+	
+	\[
+	\mathsf{Map}(\Sigma X, Y)\cong \mathsf{Map}(X,F(S^1,Y))\cong \mathsf{Map}(X,\Omega Y)
+	\]
+	where $\Omega Y$ is the loops on $Y$. Then we also get \[
+	\pi_0 \mathsf{Map}(X,Y)\cong [X,Y] 
+	\]
+	If $X$ is a based space and $\pi_0 X$ is the path components of $X$ which is the collection of $[S^0,X]$. So what are the path components of $\mathsf{Map}(X,Y)$?. Two maps $f,g$ are in the same component if there is a path in $\mathsf{Map}(X,Y)$ from $f$ to $g$. But what is a path in $\mathsf{Map}(X,Y)$? A path in $\mathsf{Map}(X,Y)$ from $f$ to $g$ is a map $\gamma:I\to \mathsf{Map}(X,Y)$ such that $\gamma(0)=f$ and $\gamma(1)=g$ and by adjunction that is the same thing as a map $\bar\gamma:X\wedge I_+ \to Y$ such that $\bar\gamma(x,0)= f(x)$ and $\bar\gamma(x,1)=g(x)$, i.e. a homotopy. Therefore the path components of $\mathsf{Map}(X,Y)$ are the homotopy classes $[X,Y]$.
+	
+	Now, if we have a space and break it into its path components, it's a bunch of sets but it's pretty crude. It's a reasonably thing but can we extrapolate? What else is embedded in $\mathsf{Map}(X,Y)$?
+	
+	So we want to understand algebraic structure on $[\Sigma X, Y]$. We can look at the sequence \[
+	Ff\to X\to Y \to Cf\to \Sigma X\to \dots 
+	\]
+	We can see that $[\Sigma X,Y]$ is the path components of $\mathsf{Map}(\Sigma X,Y)\cong \mathsf{X,\Omega Y}$. Then $\Omega Y$ is a ``monoid" upto homotopy.
+	
+	If we take $\gamma: S^1\to X$ and $\tau S^1\to X$ with $I\to X$ in each then $\gamma+\tau(t)=\gamma(32t)$ for $t\in [0,1/2]$ and $\tau(2t-1)$ with $t\in [1/2,1]$ is $[\gamma+\tau]\to X$.  We we have $\gamma_1, \gamma_2,\gamma_3: S^1\to X$  and $(\gamma_1+\gamma_2)+\gamma_3=\gamma_1+(\gamma_2+\gamma_3)$. On homotopy classes, rthis means that homotopy classes of maps $[X,\Omega Y]$ is a group. Whats the inverse? It goes the other way. 
+	
+	
+	We can extend this to $\mathsf{Map}(X,\Omega Y)\cong \Omega\mathsf{Map}(X,Y)$ with $f,g:X\to \Omega Y$ to have $f\ast g(x)=f(x)g(x)$. 
+	
+	Moore loops, though, have a problem because of rescaling.\[
+	\Omega_M=\{\gamma:[0,\ell_\gamma]\to X\}
+	\]
+	where $\gamma(0)=\gamma(\ell_\gamma)$. This is a monoid. Then for two maps $\gamma, \tau$ we make the concatenation on the domain $[0,\ell_\gamma+\ell_\tau]\to X$ which gives an honest to goodness monoid. 
+	\begin{figure}
+		\includegraphics[width=\textwidth]{homotopygroupsabelian.png}
+		\caption{A diagram of the homotopy of $I^2$ that proves that the homotopy groups of dimension 2 and above are Abelian}
+	\end{figure}
+	
+	$[X,Y]$ is a set. $[\Sigma X, Y]$ is a group. $[\Sigma^2 X, Y]$ is a group, and it will continue to hold for $[\Sigma^n X, Y]$ for $n\geq 2$. Maps from $\Sigma^2 X\to Y$ is homeomorphic to maps from $X$ to $\Omega^2 Y$. Then $\Omega^2 X \to X$ is the same as the set of all maps form the square to $X$ which takes $\partial I^2$ to the basepoint. What's the homotopy? It's called the ``spin the wheel homotopy" for $\gamma_1\ast \gamma_2$ and $\gamma_2\ast \gamma_1$. Therefore homotopy classes of maps on the $I^2$ commute, so $[\Sigma^2 X, Y]$ is an Abelian group. 
+	
+	There are some unsettling facts here. Going from $0$ to $1$ loop took us from sets to groups, which is a vast jump (algae has srtarted walking on land) and then $1$ to $2$ goes to an Abelian group. Then after that we get nothing else. It increases wildly. This is the beginning of the theory of E-N Algebras
 	
 
 \end{document}
