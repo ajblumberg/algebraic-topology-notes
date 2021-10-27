@@ -834,6 +834,137 @@
 		\ast\arrow[r]& Y'\arrow[u,"cong"]&\arrow[l] X\arrow[u,"\cong"]
 		\end{tikzcd}
 	\end{center}
+\section{October 20th}
+Culinary indoctrination: Today, we will discuss Sushi. These two places fall into the category of good neighborhood places that are not too expensive and have very good fish. These places are Sushi Yasaka and Tomoe, There's another place called Sushi Zo (branch of an LA place but it's more expensive). Second avenue and 11th street. He says that there's another place for Sushi Yasuda is another recommendation. He said its cheap but to my knowledge it's pretty expensive. 
+
+\subsection{Return to the cofiber sequences}
+\begin{center}
+	\begin{tikzcd}
+	X\arrow[r,"f"] & Y\arrow[r,"g"]&\arrow[dr,"\alpha"]Cf\arrow[r]& \Sigma X\arrow[r] &\Sigma Y\arrow[r] &\dots\\
+	& &  & C_g \arrow[ur,"\beta"]\arrow[u]
+	\end{tikzcd}
+	
+\end{center} 
+We just need to make sure that this vertical component of the diagram commutes. We can get $C_g$ from collapsing the cone $CY$ in $Cf$. Now we need a map $C_g\wedge T_\ast\to \Sigma X$ What is it on $CX$ and what is it on $CY$? $h(x,s,t)=(f(x),t-st)$ What is it on $CY$? $h(y,s,t)=(y,s+t-st)$. It crushes down the part of $Y$ outside of $X$. Ultimately, we're trying to say that if we think about the sequence \begin{center}
+	\begin{tikzcd}
+	X\arrow[r,"f"] &Y \arrow[r,"g_0"] & Cf\arrow[r]\arrow[d,equal] &\Sigma X\arrow[r] & \Sigma Y\arrow[r] & \Sigma Cf\arrow[r] & \dots\\
+	X\arrow[r,"f"] & Y \arrow[r,"g_0"]& Cf\arrow[r,"g_1"] & Cg_0\arrow[u] \arrow[r] & Cg_1\arrow[r] &\dots
+	\end{tikzcd}
+\end{center}
+This shows that we get commuting in the diagram here from the above diagram
+
+Now we will resume talking about fibrations. A cofiber is a map such that the cofiber and the homotopy cofiber are the same. The slogan is that the fiber and the homotopy fiber are the same, where the fiber of a map from $X$ to $Y$ is specified by the pullback\begin{center}
+	\begin{tikzcd}
+	& \ast\arrow[d]\\
+	X\arrow[r,"f"] & Y
+	\end{tikzcd} which gives \begin{tikzcd}
+	f^{-1}(\ast)\arrow[r]\arrow[d]& \ast\arrow[d]\\
+	X\arrow[r,"f"] & Y
+	\end{tikzcd}
+	as the pullback
+\end{center}
+And additionally \begin{center}
+	\begin{tikzcd}
+	Ff \arrow[r] \arrow[d]&py \arrow[d] \\ X\arrow[r,"f"] &Y
+	\end{tikzcd}
+\end{center}
+where $py$ is $\mathsf{Map}(I_*,Y)$
+\begin{definition}
+	$f:E\to B$ is a fibration if there exists a lift by \begin{center}
+		\begin{tikzcd}
+		Y\arrow[r] \arrow[d] & E \arrow[d,"f"]\\
+		Y\times I\arrow[r] &B
+		\end{tikzcd} with the same data as \begin{tikzcd}
+		E\arrow[dd] & & \arrow[ll] E^I \arrow[dd]\\
+		& Y \arrow[ul] \arrow[dr]\arrow[ur,dashrightarrow]& \\
+		B && \arrow[ll] B^I
+		\end{tikzcd}
+	\end{center}
+\end{definition}
+$(F,G)$ is an adjoint pair \begin{center}
+	\begin{tikzcd}
+	FX\arrow[r]\arrow[d] &  Y\arrow[d] \\
+	FX'\arrow[r] & Y'
+	\end{tikzcd}
+	\begin{tikzcd}
+	X\arrow[r]\arrow[d] &  GX\arrow[d] \\
+	X'\arrow[r] & GY'
+	\end{tikzcd}
+\end{center}
+\subsection{Dualizing}
+If \begin{center}
+	\begin{tikzcd}
+	E'\arrow[r] \arrow[d,"q"]&E\arrow[d,"p"]\\ B'\arrow[r]& B' 
+	\end{tikzcd}
+\end{center}
+Then if $p$ is a fibration, $q$ is a fibration. 
+
+Recall, $f:X\to Y$ factor $X\rightarrowtail Mf\to Y$ is the universe test symbol for cofibrations. Then similarly for in fibrations, we get $X\to P_f\twoheadrightarrow Y$ as the universal test object for fibrations. 
+
+Therefore we can find that 
+\begin{center}
+	\begin{tikzcd}
+	X\times_f PY\arrow[r]\arrow[d] & PY\arrow[d]\\X\arrow[r,"f"]& Y
+	\end{tikzcd}
+	then we have that $X\times_fPY$ is a mapping path space of $f$. 
+\end{center}
+$f:E\to B$ is a fibration, then there exists a path lifting function $\ell:E\times _f B^I\to E^I$ and $\theta:E^I\to E\times_f B^I$  where $\theta\ell = \text{id}$. Homotopy fiber is the actual fiber of the map from $E\times_f B^I\to B$. 
+
+As a proposition if $f:E\to B$ is a fibration, then the fiber and the homotopy fiber are equivalent. The proof of that is the duel of the proof we gave for the mapping cone and the honest quotient. Given a fibration we can form the sequence \begin{center}
+	\begin{tikzcd}
+	\Omega Ff\arrow[r] & \Omega X\arrow[r] &\Omega Y \arrow[r] & Ff\arrow[r]& X\arrow[r,"f"] &Y
+	\end{tikzcd}
+\end{center}
+Then $\Omega Ff\cong F(\Omega f)$
+Then by the same argument as at the beginning, if we have a space $Z$ and we have a long exact sequence 
+$[Z,\Omega X]\to [Z,\Omega Y]\to [Z,Ff]\to  [Z,X]\to [Z,Y]$
+
+If we enter $S^n$ as $Z$ this gives rise to a long exact sequence germane to homotopy theory
+
+
+$\mathsf{Map}(\Sigma X,\Sigma X)\cong \mathsf{Map}(X,\Omega\Sigma X)$
+
+And we can take the adjoint of the unit from $\mathsf{Map}(\Sigma X,\Sigma X)$ in the other group, and this can be helpful. The same thing can be done in the opposite adjoint direction. This gives us
+
+\begin{center}
+	\begin{tikzcd}
+	& &\Sigma\Omega Ff\arrow[d] \arrow[r] & \Sigma\Omega X\arrow[r] \arrow[d]&\Sigma\Omega Y\arrow[r] \arrow[d]&\Sigma\Omega Ff\arrow[r] \arrow[d]&\Sigma X\arrow[d,equal]\\
+	\dots \arrow[r] & \Omega Y\arrow[r] \arrow[d,equal]&F f \arrow[r] \arrow[d]&X\arrow[r]\arrow[d]& Y \arrow[r] \arrow[d]&Cf\arrow[r] \arrow[d]&\Sigma X\arrow[r]&\dots \\
+	& \Omega Y\arrow[r]& \Omega Cf\arrow[r] &\Omega\Sigma X\arrow[r] & \Omega\Sigma Y\arrow[r] &\Omega\Sigma Cf
+	\end{tikzcd}
+\end{center}
+$\Sigma$ shifts by $1$ and $\Omega$ shifts by $-1$ and they are adjoint. Additionally, $X\to \Omega\Sigma X$ is not usually an equivalence and $\Sigma\Omega X\to X$ is not usually an equivalence. ``The comparison between based fiber and based cofiber sequences"
+
+In $\mathsf{Top}_*$, cofiber sequences and fiber sequences are very different. In $\mathsf{Ch}(R)$ cofiber and fiber sequences coincide up to a sign. 
+
+\subsection{Homotopy Groups}
+Now we want to talk about Homotopy Groups. In particular we want to prove the following theorem:
+\begin{theorem}
+	If $f:X\to Y$ is a weak equivalence (isomorphism on homotopy groups) and $X$ and $Y$ are CW complexes, then $X$ is homotopy equivalent to $Y$.
+\end{theorem}
+What we will really prove is the following: if $Z$ is a $CW$ complex and $X\to Y$ is a weak equivalence then $[Z,X]\cong [Z,Y]$ is an isomorphism. It preserves weak equivalences in the target variable so it is like a quasi-isomorphism. We will give a fairly modern proof of this. 
+
+Let $f:X\to Y$ be a fibration and a weak equivalence (aka an ``acyclic" fibration)
+
+And suppose we have the commuting diagram\begin{center}
+	\begin{tikzcd}
+	A\arrow[r]\arrow[d,rightarrowtail] & X\arrow[d,twoheadrightarrow]\\
+	B\arrow[r]\arrow[ur,dashrightarrow] &Y
+	\end{tikzcd}
+\end{center}
+Then the dashed arrow exists induced by the other arrows (if $A$ and $B$ are CW complexes).
+
+We can then make the following two diagrams
+\begin{center}
+	\begin{tikzcd}
+	\emptyset\arrow[d]\arrow[r] &X\arrow[d]\\Z\arrow[ur,dashrightarrow]\arrow[r] &Y
+	\end{tikzcd} is surjective and 
+	\begin{tikzcd}
+	Z\times \partial I \arrow[r] \arrow[d]& X\arrow[d] Y\\
+	Z\arrow[ur]\times I\arrow[r] &Y
+	\end{tikzcd} is injective
+\end{center}
+$X\to P_f\twoheadrightarrow Y$ 
 \section{October 25th}
 
 Culinary Indoctrination:
