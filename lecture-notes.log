@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  18 OCT 2021 15:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  27 OCT 2021 15:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -795,7 +795,7 @@ Stur-geon (``neigh-bour-hood place"),
  []
 
 [9] [10] [11] [12] [13] [14] [15] [16] [17]
-<homotopygroupsabelian.png, id=194, 684.93892pt x 201.45262pt>
+<homotopygroupsabelian.png, id=214, 684.93892pt x 201.45262pt>
 File: homotopygroupsabelian.png Graphic file (type png)
 <use homotopygroupsabelian.png>
 Package pdftex.def Info: homotopygroupsabelian.png  used on input line 687.
@@ -810,47 +810,71 @@ Overfull \hbox (94.00401pt too wide) in paragraph at lines 770--770
  [] 
  []
 
-[20] [21] [22]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 838.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 838.
+[20] [21] [22] [23]
+Overfull \hbox (16.42581pt too wide) in paragraph at lines 900--900
+[]\OT1/cmr/m/n/12 Since $\OML/cmm/m/it/12 X[] \U/msa/m/n/12 ^^Z \OML/cmm/m/it/1
+2 X[]$ \OT1/cmr/m/n/12 of $\OML/cmm/m/it/12 E\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 
+X[]; X[]\OT1/cmr/m/n/12 )) [] \OML/cmm/m/it/12 E\OT1/cmr/m/n/12 (\OML/cmm/m/it/
+12 X[]=X[]\OT1/cmr/m/n/12 )$ form an-other cel-lu-lar the-ory $\OML/cmm/m/it/12
+ ^^Y[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]=X[]$
+ []
+
+[24] [25]
+Overfull \hbox (11.76845pt too wide) in paragraph at lines 924--925
+\OT1/cmr/m/n/12 This was char-ac-ter-ized by the prop-erty that a Moore space $
+\OML/cmm/m/it/12 M$ \OT1/cmr/m/n/12 has $(\OML/cmm/m/it/12 G; n\OT1/cmr/m/n/12 
+)$ so that $\OML/cmm/m/it/12 H[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 M\OT1/cmr/m/n
+/12 (\OML/cmm/m/it/12 G; n\OT1/cmr/m/n/12 )) []
+ []
+
+[26] [27] [28]
+Overfull \hbox (62.14967pt too wide) detected at line 1008
+[]
+ []
+
+[29]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1009.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1009.
  (./lecture-notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 838.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 838.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1009.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1009.
+
 Package rerunfilecheck Info: File `lecture-notes.out' has not changed.
-(rerunfilecheck)             Checksum: F5C7B53A91F8BD5404358F827557A8B5;987.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 838.
+(rerunfilecheck)             Checksum: A9684EB63DE2DE2DFF756B10181F5F4B;1312.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1009.
  ) 
 Here is how much of TeX's memory you used:
- 21396 strings out of 492616
- 422932 string characters out of 6129482
- 506208 words of memory out of 5000000
- 24886 multiletter control sequences out of 15000+600000
+ 21894 strings out of 492616
+ 435387 string characters out of 6129482
+ 506215 words of memory out of 5000000
+ 25365 multiletter control sequences out of 15000+600000
  20835 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,19n,84p,899b,1046s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,19n,84p,1267b,1046s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
-/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
-al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
-texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
-live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-19/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2019
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2019/texm
-f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on lecture-notes.pdf (22 pages, 413892 bytes).
+/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
+al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
+/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
+xlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
+ve/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
+2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/201
+9/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2019/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2019/texmf-
+dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on lecture-notes.pdf (29 pages, 454587 bytes).
 PDF statistics:
- 302 PDF objects out of 1000 (max. 8388607)
- 255 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 367 PDF objects out of 1000 (max. 8388607)
+ 311 compressed objects within 4 object streams
+ 97 named destinations out of 1000 (max. 500000)
+ 178 words of extra memory for PDF output out of 10000 (max. 10000000)
 

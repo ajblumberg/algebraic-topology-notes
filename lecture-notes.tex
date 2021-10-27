@@ -834,5 +834,176 @@
 		\ast\arrow[r]& Y'\arrow[u,"cong"]&\arrow[l] X\arrow[u,"\cong"]
 		\end{tikzcd}
 	\end{center}
+\section{October 25th}
 
+Culinary Indoctrination:
+Discussion of doughnuts. 
+\begin{enumerate}
+	\item Doughnut Plant
+	\item Doughnut Pub (7th Ave. \& 14th st., Open 24 hours and worthy of note)
+	\item Peter Pan (Greenpoint, Polish)
+\end{enumerate}
+There are two major schools of doughnut production, one of which is a classic American doughnut shop (like Dunkin Donuts but better). Peter Pan is much better then Doughnut pub, both of which are of this type. The other type of place is artisanal hipster doughnuts. There are lots of them around the city. The original location is at Grand near Essex. Easier ones to go to, including one at 23rd st.
+
+Opinions of cake doughnuts vs yeast doughnuts. He has normative views and he regards the difference as a permissible personal variation. In terms of these places, Yeast is better than Cake at Doughnut Pub, both are excellent at Doughnut Plant.
+
+He used to go to Tokyo a great deal for a friend/other researchers. There was a place called Mr. Doughnut and it was a Massachusetts chain. There were lots of strange nostalgia for 1960s Boston in the middle of Japan. 
+
+\subsection{Interaction between Homotopy Groups and Cohomology.}
+We will finish proving the whitehead theorem. 
+\begin{theorem}
+	If $X\to Y$ is a weak equivalence and $Z$ is a CW-Complex, then $[Z,X]\to [Z,Y]$ is an isomorphism. 
+\end{theorem}
+Last class we reduced this proof to $X\twoheadrightarrow Y$ is a fibration and weak equivalence, then there is a lift $B\to X$. \begin{center}
+	\begin{tikzcd}
+	A\arrow[r] \arrow[d,rightarrowtail]& X\arrow[d,twoheadrightarrow,"\cong"] \\B\arrow[r] &Y
+	\end{tikzcd}
+\end{center}
+We are proving that cofibration (CW inclusions) have the left lifting property. against fibrations. We procede with induction. It suffices to consider the case of \begin{center}
+	\begin{tikzcd}
+	S^{n+1}\arrow[r] \arrow[d]&X\arrow[d,twoheadrightarrow,"\cong"]\\D^n\arrow[r] &Y
+	\end{tikzcd}
+\end{center}
+Observation: it suffices to replace $D^n\to Y$ by a homotopic map.  (use the fact that $X\to Y$ is a fibration). 
+
+Consider the map $D^n\to D^n$. We will take $D^n$ and carve out an annulus and restrict the map to that. We will send the center part to a point. Basically just contracting the middle circle to a point and shifting everything else into it. Evidently this is homotopic to the identity. Name this map $f$. Then we get \begin{center}
+	\begin{tikzcd}
+	S^{n+1}\arrow[d]\arrow[rr] && X\arrow[d]\\D^n\arrow[r,"f"] & D^n\arrow[r] &Y
+	\end{tikzcd} 
+\end{center}
+Because $X\to Y$ is a fibration, we can solve the lifting already. If we look at the fiber over the image of $0$, it must be contractible. Why? because of the weak equivalence, so $\pi_1$ must be equal. 
+
+Remember, if $X$ and $Y$ are CW complexes, then if $f:X\to Y$ is a weak equivalence. then $f$ is a homotopy equivalence. 
+
+Any space $X$ is weakly equivalent to a $CW$ complex. There are various proofs, most of the classical ones are not functorial, so ours will also not be functorial
+\begin{proof}
+	$\bigwedge_{\alpha}S_\alpha^{n_\alpha}\to X$ and is a surjection on each $\pi_n$. If we let $Z_i$ be a space resulting from the wedging of spheres. Then, we can kill the kernel. $\pi_n(Z_i)$ surjects onto $\pi_n(X)$ then we have homotopic $\gamma, \gamma':S^n\to Z_i$ in $\pi_n(X)$. Now attach a cylinder that gives a homotopy between $\gamma $ and $\gamma'$ from $Z_i$ to $Z_{i+1}$. One observation to make is that whitehead implies that this does not screw up any prior work. From a low dimensional sphere there are no nontrivial maps into a higher dimensional sphere. If we do something like this, once we fix $\pi_n$ and move on, we wont mess it up by fixing $\pi_{n+1}$.  \end{proof}
+
+Terminology:
+$X$ is $n$-connected if $\pi_i(X)=0$ for $i< n$. $X\to Y$ is a $n$-equivalence of if $\pi_i X\cong \pi_i Y$ for $i< n$ surjective at $n$. We are going to define cohomology by way of defining Eilenberg Maclane spaces. We will give a definition of cohomology as the functor represented by Eilenberg Maclane spaces and then it will turn out that there are other ways to say it. 
+
+First, the Hurewicz Map. this will be a map from $\pi_n(X)$ to $H_n(X)$, and this is reduced by killing the extra class in degree $0$. 
+
+The map will take $\gamma\mapsto \gamma_\ast(1)$ for $\gamma\in \pi_n(X)$. 
+
+\begin{lemma}{1}
+	If $X=\bigwedge_\alpha S^n$ then this is an isomorphism. Something more general that we will prove but not today is the following, which is that $X$ is $n$-connected and the map $\pi_n(X)\to H_n(X)$ is an isomorphism if $n\geq 1$ and if $n=1$ then this is Abelianization. 	
+\end{lemma} 
+
+Remember: the theory of Abelian groups is easy and the theory of all groups is hard, in particular if we have this kind of we have lots of fun things involving noncomputability. The word problem is undecidable. The argument is a diagonalization. This means we can embed undecidable questions into questions about spaces. This bad behavior happens on $\pi_1$. That's the only on that can not be $\pi_1$. 
+
+Now, one comment is that this theorem ($\ast$) depends on something called ``homotopy excision". This is an interesting result which says something like the following. For homology, we just have excision, we can glue stuff. One thing that excision amounts to is saying that we have something like Mayer-Vietoris. If we have a cover and a union we can relate all the homologies. Homotopy excision says if we decompose things and the pieces are pretty connected, then we can say something about the connectivity of what happens when we glue them together. This is a much for subtle statement. This is a hard, nontrivial theorem. We will prove this and it is related to something interesting. How do you increase connectivity, here's an easy way to do it. take $X$ and take $\Sigma^n X$ which is the same thing as $S^n\wedge N$. If you make things more connected, we make excision work better (maybe we can't exactly see this). If we push up connectivity, the excision formula looks nicer and nicer. The fact that excision doesn't quite work is the same thing as loops in suspension not quite being inverse. Everything gets solved if we stabilize by passing to the category of spectra. 
+
+What is the relationship betwen \textsf{Map}$(X,Y)$ and \textsf{Map}$(\Sigma X,\Sigma Y)$. BY adjunction, we're asking for the relationship $[X,Y]$ and $[X,\Omega\Sigma Y]$. This is something called the 
+freudenthal Suspension Theorem. If they're connected enough, it's an equivalence. We should think of these as sorts of approximation results. Now we are going to use the Hurewicz map to establish the uniqueness on $CW$ complexes (which is enough by weak equivalences) of ordinary homology. We will just sketch this. Suppose that we have some theory $E$ that satisfies the EIlenberg Steinrod axioms. Associated to $E$, we also have cellular theory.  $E(X_n, X_{n-1})$ was $C_n^E(X)$ is the boundary of complex coming from LES of pair. 
+
+Since $X_{n+1}\rightarrowtail X_n$ of $E(X_n,X_{n+1}))\cong E(X_n/X_{n+1})$ form another cellular theory $\pi_n(X_n/X_{n+1}$ . Define for any pair $(n,G)$ with $G$ Abelian group and $n\in \mathbb{N}$ a space $K(G,n)$ such that \begin{itemize}
+	\item $K(G,n)$ is a CW-complex
+	\item $K(G,n)$ is unique up to homotopy equivalence
+	\item $\pi_1K(G,n)=0$ unless $i=n$ when $\pi_n K(G,n)\cong G$. 
+\end{itemize}
+There's something else to say whcih is that homotopy classes of maps $[K(G_1,n),K(G_2,n)]$ is bijective (isomorphism of sets) to homomorphisms from $G_1$ to $G_2$. There's a sort of dichotomy theorem where small complexes tend to have enormous and hard to deal with homotopy groups. This will be a great deal like our CW approximation process. We will produce something $n$-connected that has the right homotopy group at $\pi_n$ that has crazy stuff up about. But then we will kill everything about $\pi_n$. It's an infinite number since as we glue stuff on to kill stuff.
+
+As observation, we know that $K(G,n)\cong \Omega K(G,n+1)$. Why? Because of the long exact sequence of homotopy groups, i.e. what loops does. For any space $X$ we have the path loop fibration which is $\Omega X\to \text{Paths} X\to X$. $\text{Paths} X$ is contractible, so we get a long exact sequence of $\pi_i$ which implies that $\pi_i$ of $X$ is isomorphic to $\pi_{i+1}$ of $\Omega X$. That's all that's happening here. This says something fascinating. If you weren't so exhausted, you would feel excited. This tells you that this thing has a product coming from the loop structure, which is cool and perhaps unexpected. 
+We can then induct as well where
+
+$k$ times $\Omega(\Omega(\dots \Omega(G,n+k)))=\Omega(G,n)$. 
+
+The non-functorial ad-hoc way to do this is the following. We can make $M(G,n)$, the Moore space. $H_1(M(G,n))=0$ where $i=n$ and $H_n(M(G,n))\cong G$
+
+We know that $\pi_n(M(G,n))\cong H_n(M(G,n))\cong G$. For a space like this that is $n$-connected we can replaced it with something that has no $n$-cells. It it's homologically $n$-connected then it's also broadly $n$-connected
+
+$\bigwedge S_\gamma^{n+1}$ for $\gamma\in \pi_{n+1}(M(G,n))$. We can certainly do that. This has a map to $M(G,n)$. We pick a representative of each homotopy class then we wedge them together. Then we get this map. Now what do we do? 
+
+Now take the homotopy cofiber of this map. If we write $M(G<n)=Z_0$ we can call that $Z_1$. $\pi_n(Z_1)\cong G$. Playing a game like this does not mess anything up at $G$. $\pi_{n+1}(Z_1)\cong 0$. We're filled all the class of maps by placing a disk on top of them, in which they can be contracted. The next step up is crazy. We've added a potentially infinite number of spheres. Now we repeat infinitely many times and take the limits. This is not functorial in any sense, and it is huge. It is a CW complex. Provided $M(G,n)$ is a CW complex, this is a CW complex. We do know some explicit example. $S^1$ is a $K(\mathbb{Z},1)$. Once we have this, we can define a new invariant. We will call this invariant cohomology. It will be defined as $H^n(X,R)=[X,K(R,n)]$. This is a contravariant functor from spaces to Abelian groups. 
+\section{October 27th, 2021}
+	Culinary Indoctrination for today is Defonte's, a sandwich shop in Red Hook. There are lots of strange hipster spaces in old warehouses, the waterfront is very pretty. 
+	
+	The midterm will probably be around November 10th. It will be a take-home and it will be multiple days long. It will likely be structured that he sends us the midterm on Monday and then we will have 12 hours to work on it, but that timeperiod can be taken any time from Monday to Friday (something along those lines) 
+	\subsection{Moore Spaces}
+	This was characterized by the property that  a Moore space $M$ has $(G,n)$ so that $H_n(M(G,n))\cong G$, otherwise $H_m(M(G,n))=0$ for $m\neq n$.
+	
+	We will build this using the presentation of the group $G$ in terms of Free Groups, and then we will model it. 
+	In general, we know that $G$ is isomorphic to $F/R$ where $F$ and $R$ are free, and $R$ are the relations, then we have a surjection $f\to G$ and $R$ is the kernel of the map $F\to G$ This is essentially the co-unit of a adjunction. 
+	
+	We need to model this in topology. We will have $M(G,n)$ as a cofiber of $\bigwedge_\alpha S_\alpha^n\to \bigwedge_\beta S_\beta^n$ where the $\alpha$ wedge represents generators of $R$ and the $\beta$ wedge represents the generators of $F$. The long exact sequence of homology tells us that we get the right answer. 
+	
+	Now, what is the map $\bigwedge_\alpha S_\alpha^n\to \bigwedge_\beta S_\beta^n$. Pick a generator in $R$, $\gamma$. $\gamma$ is equal to some sum $\sum_{i=1}^m k_i\beta_i$ where $\beta_i$ are generators of $F$ and $k_i$ are integers. Now, we have \begin{center}
+		\begin{tikzcd}
+		S^n\arrow[r] & \bigwedge_m S^n \arrow[r,"\deg k_i"] & \bigwedge \beta_i
+		\end{tikzcd}
+	\end{center}
+	
+	This is essentially a linear algebra game.
+	
+	Now, if we recall, we built $K(G,n)$ by attaching cells to $M(G,n)$ to kill all the higher homotopy groups. We did this in a large process where we went inductively. By Hurewicz theorem we know that $\pi_n(G<n)\cong G$ by the Hurewicz theorem. Eilenberg-Maclane spaces. 
+	
+	There is an elaboration of this process, which produces ``Postnikov Sections" or ``Postnikov Tower." Homology is computed inductively, but it is a formal decomposition of a space where the instructions for building it are controlled by the algebra. You could ask a similar question about Homotopy groups. That is what the postnikov tower is. The idea is that we can end up with a tower \begin{center}
+		\begin{tikzcd}
+		& P^{n+2}X\arrow[d]\\
+		&P^{n+1} X\arrow[d]\\
+		X\arrow[r] \arrow[uur]\arrow[ur]&P^nX\arrow[d]\\
+		& \vdots 
+		\end{tikzcd}
+	\end{center}
+	$P^nX$ is formed by infinitely many attached cells to $X$ to kill all homotopy groups above $n$. 
+	\begin{center}
+		\begin{tikzcd}
+		\dots \arrow[r] &k(\pi_{n+1}(X),n+1)\arrow[r] & P^{n+1} X \arrow[r] &P^n X \arrow[r] &k(\pi_n X, n+2)\arrow[r] &\dots
+		\end{tikzcd}
+	\end{center}
+	Then $P^{n+1} X$ is the hofiber of $P^nX\to k(\pi_{n+1}, n+2)$. This fiber has another name, which is $H^{n+2}(P^n X; \pi_{n+1}X)$. Whatever else we might have thought abouut cohomology, this is a pretty good reason to think that cohomology is interesting. This is called the k-invariant. This is the gluing data that puts spaces together. If you want to build iup spaces there are two kinds of data that make it nontrivial. There's cellular attaching maps, and alternatively you have to know the cohomological twisting invariant to put it together the other way. This is a step towards algebraicizing spaces. 
+	
+	We might not talk about this explicitly, but another place where this happens is in obstruction theory. The idea is that we have a map on something and we want to extend it. Typically the data we want to extend things live in a cohomolgy group. Obstruction theory is interesting but we may or may not have time to truly talk about it. 
+	
+	Something else we should say that is $X$ is eqiuivalent to the homotopy limit of $P^nX$. You can recover the space from the tower very explicitly from passing to the homotopy limit.
+	\subsection{Cohomology}
+	Remember, we had the definition	$H^n(X;R)=[X,k(R,n)]$ What do we now know about this functor? Immediately we now several things. We can conclude that cohomology is a homotopy invariant. $X\simeq Y$ and then $H^n(X)\cong H^n(Y)$. The next thing we can see is $H^n(\Sigma X)$ is $[\Sigma X,k(R,n)] $ and by adjunction this is $[X,\Omega, k(R,n)]\cong [X,k(R;n-1)]$ coming from the path fibration, which is $H^{n-1}(X)$
+	
+	Then lastly we get that $A\to X\to CF$ has the long exact sequence \begin{center}
+		\begin{tikzcd}
+		\dots \arrow[r] & H^n(Cf)\arrow[r] & H^n(X) \arrow[r] & H^n(A) \arrow[r] &H^{n+1}(Cf)\arrow[r] & \dots
+		\end{tikzcd}
+	\end{center}
+	
+	$H^n(S^n)\cong [S^n,k(R,n)]\cong \pi_n k(R,n)\cong R$ and so we can find that $H^n$ satisfies the Eilenberg Steinrod Axioms. We will get another construction of cohomology that is useful for other things.
+	
+	Most notably, the way we wrote it with the cofiber used excision. 
+	
+	We have cohomology and it satisfies our axioms and we will do lots of things with it but first a question. What did we need to know about $\{k(R,n)\}$ to do this? We didn't actually care about the homotopy groups of these spaces. We needed the fact that $k(R,n)\cong \Omega k(R,n+1)$ mainly, and then one more thing. Suppose that we have a collection of spaces  $E_0, E_1,\dots $ and we stipulate that $f:E_i\to \Omega E_{i+1}$ has $E_i\cong_f E_{i+1}$. We can define $E^n(X)=[X,E_n]$. What do we get out of that? It's homotopy invariant, it satisfies the suspension axiom, it has the long exact sequence associated to a cofibration, and it clearly has the direct sum property, since that's how we defined it. It does not necessarily have the property that $E^n(S^n)\cong [S^n, E^n]$ is as desired. This is what's called a generalized cohomology theory. You've given up on what's called the dimension axiom. We can still do this and there are many interesting generalized cohomology theories. There are two ways to look at this. On the one hand, examples of such theories include $MU$, $KU$, (complex cobordism [what happens if spaces are equivalent if they are upto homotopy the boundary of a manifold. ], complex K-theory[Bundles on a space]). 
+	
+	A collection of spaces like this is called a spectrum. In general, you can prove a sort-of theorem. Any spectrum like this gives rise to a general cohomology and any cohomology theory gives rise to a spectrum. This is called Brown Representability. Why is this a representability theorem? The collection of functors is represented by homotopy maps into a space. It's not the case that they give rise to a spectrum directly but it's up to some basic equivalences. This theorem is not a terrible proof, you could learn it relatively quickly, in an afternoon or so. 
+	
+	There's something else. We can form the category of spectra. That's the category of sequences of spaces that have a property like $E_i=\Omega E_{i+1}$. The objects are $E_i$ and $F_i$ arnd you need maps such that the following diagram commutes
+	\begin{center}
+		\begin{tikzcd}
+		E_i\arrow[r] \arrow[d]& F_i\arrow[d]\\
+		\Omega E_{i+1}\arrow[r] & \Omega F_{i+1}
+		\end{tikzcd}
+	\end{center}
+	We can call this category \textsf{Sp}. This is the formal stabilization of \textsf{Top}$_\ast$. This is the original thing that is nontrivial that is stable which you can make out of spaces. There are a couple of things to say about this. One thing to say is that this tells you is that this is another way to think about cohomologies. Another thing to say about this category is that this is the original incarnation of the idea that went into a triangulated category. The derived category in Algebraic Geometry, Vertier wrote down those axioms by in part knowing about the category of spectra. Invariants of geometric spaces should ultimately be controlled by some kind of derived category which will look something like this. One last thing to say about the category of spectra that relates to number theory is that this is a symmetric monoidal category with a tensor product. It's a generalization of the cup product. 
+	
+	If we think about the category of commutative rings, it has an initial object, $\mathbb{Z}$. The initial commutative ring is no longer $\mathbb{Z}$. It's built from spheres. You can construct invariants of that which can control, e.g. the van-diver conjecture is true. Lots of data about p-adic functions for extensions of $\mathbb{Z}$. There's a lot of number theoretic data sitting in this category. 
+	
+	We will now give a ``hands on" definition of cohomology. $C^n(X;R)=\mathsf{Hom}_R(C_n(X);R)$ This assembles into a cochain complex. 
+	
+	Remember we have the chain complexes which are the duel of the cochain complexes\begin{center} Chain complex
+		\begin{tikzcd}
+		\vdots\arrow[d]\\A_n\arrow[d,"\partial"]\\ A_{n-1}\arrow[d]\\\vdots
+		\end{tikzcd}
+		with $\partial^2=0$ and cochain complex 
+		\begin{tikzcd}
+		\vdots\\A_n\arrow[u]\\ A_{n-1}\arrow[u,"d"]\\\vdots\arrow[u]
+		\end{tikzcd}
+		with $d^2=0$. 
+	\end{center}
+	What happens in this cochain complex? $f\in C^n(X;R)$ then $\partial f(z)=(-1)^{n+1}f(\partial z)$ Define $H^n$ as the cohomology of the complex. The points of this definition for our purposes are the following\begin{enumerate}
+		\item We can check using the Eilenberg Steinrod Axioms that this is isomorphic to the $[-,k(R,n)]$. We can just check this directly.
+		\item This is an elaboration of the adjoint given in homology implying that $H^n(X;R)$ defined by cochian is equivalent to $[X,K(R,n)]$ If we get a new way to define cohomology, we relaly just need to check that it satifies the axioms and everything will line up to be the same, essentially. 
+	\end{enumerate}
+	We can define $\Delta:X\to X\times X$ as the diagonal map which gives us $C^\ast(X\times X; R)\to C^\ast(X;R)\cong C^\ast(X;R)\otimes C^\ast (X;R)$. This is very cool. Every space has a diagonal map. That's something about being alive. This means that every space has $H^*(X)$ becomes a graded commutative ring with $a\vee b=(-1)^{\deg a\cdot \deg b} b\vee a$. Algebras are nice because we grow up with it (we do not grow up co-adding). 
+	
+	For algebras, theres lot of ways to reduce, co-algebras have all of this fail. $H^n(X)\otimes H^m(X)\to H^{m+n}(X)$ gives us \begin{align*}
+	[X,k(R,n)]\otimes [X,k(R,m)]\to [X\times X; k(R\otimes R,n+m)]\to_{\Delta_\ast} [X,K(R\otimes R, n+m)]\to [X,k(R,m+n)]
+	\end{align*}
 \end{document}
