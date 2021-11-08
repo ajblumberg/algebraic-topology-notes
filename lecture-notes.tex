@@ -1,4 +1,4 @@
-\documentclass[12pt]{article} 
+\documentclass[10pt]{article} 
 \usepackage{verbatim}
 \usepackage{natbib}
 \usepackage{amsmath}
@@ -1137,4 +1137,190 @@ Now take the homotopy cofiber of this map. If we write $M(G<n)=Z_0$ we can call 
 	For algebras, theres lot of ways to reduce, co-algebras have all of this fail. $H^n(X)\otimes H^m(X)\to H^{m+n}(X)$ gives us \begin{align*}
 	[X,k(R,n)]\otimes [X,k(R,m)]\to [X\times X; k(R\otimes R,n+m)]\to_{\Delta_\ast} [X,K(R\otimes R, n+m)]\to [X,k(R,m+n)]
 	\end{align*}
+	\section{November 3rd, 2021}
+		Today's discussion of food will be about Uzbek food. There are various large populations of Uzbek people, including in Forest Hills and Rio. There's also Tam tov at 47th st in the Diamond District. The other restaurant of this kind is Cheburechnaya in queens in Rego Park. Most of the people who showed up in Queens were from Tashkent and so there are lots of interesting aspects of Korean cuisine in Uzbek food especially in Tashkent. He's also looking for Korean Fried Chicken restaurants. 
+	
+	We will discuss the Universal Coefficient Theorem. This tells you what happens when you change groups or rings when you compute cohomology. If you have the space $X$ there is a short exact sequence.
+	\begin{center}
+		\begin{tikzcd}
+		0\arrow[r] &\text{Ext}^1(H_{p-1})\arrow[r] & H^p(X;G)\arrow[r] & \text{Hom}(H_p(X),G)\arrow[r] & 0
+		\end{tikzcd}
+	\end{center}
+	The last two nonzero terms are the adjoint of the evaluation. This means this is an answer to the question of when is this comparison an isomorphism. What it's saying is that it's not always an isomorphism but it is always surjective, and the isomorphism depends on controlling the Ext group. In general, it's also saying that $H^p(X,G)$ gets information from $H_p(X)$ and $H_{p-1}(X)$. We will say some things about the relevant homological algebra for Ext. 
+	\begin{center}
+		\begin{tikzcd}
+		0\arrow[r] & G\arrow[r] & I_0\arrow[r] & I_1\arrow[r] &0
+		\end{tikzcd}
+	\end{center}
+	where this sequence is short exact. 
+	
+	$I_0$ and $I_1$ are injective implies $H^p(X;I)\cong \text{Hom}(H_p(X),I)$
+	
+	For any $A$, $\text{Hom}(A,-)$ has an exact sequence. 
+	\begin{center}
+		\begin{tikzcd}
+		0\arrow[r] & \text{Hom}(A,G)\arrow[r] & \text{Hom}(A,I_0)\arrow[r]& \text{Hom}(A,I_1)\arrow[r] & \text{Ext}(A,G)\arrow[r] &0
+		\end{tikzcd}
+	\end{center}
+	Apply this functor to a short exact sequence. This exact sequence is not determined by choice of injective structures. 
+	
+	\begin{center}
+		\begin{tikzcd}
+		\dots \arrow[r] & H^{p-1}(X;I_0)\arrow[r] & H^{p-1}(X;I_1)\arrow[r] & H^p(X;G)\arrow[r] &H^{p}(X;I_0)\arrow[r] & H^{p}(X;I_1)\arrow[r] & \dots
+		\end{tikzcd}
+	\end{center}
+	Using adjunction change the non-$H^p(X;G)$ terms into their Hom equivalents. 
+	
+	
+	So what does it mean to be injective?
+	
+	Let $A\to B$ be an injection of Abelian groups or more broadly $R$-modules. $I$ is injective if Hom(B,I)$\to $ Hom(A,I) is surjective,. An alternative characterization is that $I$ is injective if Hom($-$,I) preserves short exact sequences. 
+	If $R$ is a field, then all modules are injective We get $V\rightarrowtail V'$ with $\theta(V)\subseteq V'$ take a basis for $\theta(V)$ which we call $\alpha_1,\dots \alpha_k$ and extend to $\beta_i$. Note, we did not assume finite dimensionality. 
+	
+	We now want to prove that $H^p(X;I)\to \text{Hom}(H_p(X),I)$ is an isomorphism when $I$ is injective. For this, let's draw a diagram. $B_p$ and $Z_p$ are boundaries and cycles. 
+	
+	\begin{center}
+		\begin{tikzcd}
+		& B_p & C_{p+1} X\\
+		0 & Z_p & C_pX & B_{p-1} & 0\\
+		& H_pX & C_{p-1} & Z_{p-1}  \\ 
+		& 0 
+		\end{tikzcd}
+	\end{center}
+	Now we apply $\text{Hom}(-,I)$ and we can get 
+	\begin{center}
+		\begin{tikzcd}
+		&\text{Hom}(B_p,I)\arrow[r,rightarrowtail] & C^{p+1} X\\
+		0 & \arrow[l]\text{Hom}(Z_p,I) \arrow[u]&\arrow[l,twoheadrightarrow] C^p X  \arrow[u]& \arrow[l,rightarrowtail] \text{Hom}(B_p,I)& \arrow[l] 0 \\
+		&\text{Hom}(H_pX,I) \arrow[u,rightarrowtail]& C^{p-1} X\arrow[r,twoheadrightarrow] \arrow[u]& \text{Hom}(Z_{p-1}, I)\arrow[u,twoheadrightarrow] \\
+		& 0\arrow[u]
+		\end{tikzcd}
+	\end{center}
+	What's the point We can identified the comparison map $H^p(X; I)\to \text{Hom}(H^p X, I)$ in terms of the diagram. The map from $C^p x\twoheadrightarrow\text{Hom}(Z_p,I)$ induces a map $H^p(X,I)$ onto the image of $f$ in $\text{Hom}(Z_p,I)$ And we can invert $f$ since it is an injection. It's clearly a surjection and a diagram chase shows that it must also be an injection. Here we are using a couple of places where $I$ is injective, notably in identifying maps as surjective. 
+	
+	Recall, in conclusion, $H^p(X,I)\cong \text{Hom}(H_p(X),I)$ when $I$ is injective. 
+	
+	Next, we need to get injective resolutions. There is a theorem that says that $R$-mod ``has enough injectives." Professor Blumberg thinks this is from Grothendieck.  For any module $M$ there exists an injective $i$ and an injection $0\to M\to I$. We can make anything sit inside an injective module. We can ake cokernels in the sequence \begin{center}
+		\begin{tikzcd}
+		0\arrow[r] & M\arrow[r] & I_0\arrow[r] 7 i-1\arrow[r] & I_2\arrow[r] &\dots
+		\end{tikzcd}
+		and embed then in the module. then, when $R$ is a PID, this terminates after two terms. after $I_1$. More explicitly, in $\mathbb{Z}$ we will call a group divisible if for all $g\in G$ there exists and $n$ and $Y$ such that $ny=g$. Divisible groups are injective. This tells us what to do for finitely generated $\mathbb{Z}$ modules, as we get torsion pieces and free pieces. For the free piece we have \begin{center}
+			\begin{tikzcd}
+			0\arrow[r] & \mathbb{Z}\arrow[r] & \mathbb{Q}\arrow[r] &\mathbb{Q}/\mathbb{Z}\arrow[r] & 0 
+			\end{tikzcd}
+		\end{center}
+		Then we can get the make $M\to \coprod_{\text{Hom}(M,\mathbb{Q}/\mathbb{Z})}\mathbb{Q}/\mathbb{Z}$, . The map and the index are injections. \end{center}
+	
+	
+	The last fact we needed was uniqueness up to chain homotopy of injective resolutions. Let us sketch this. The real theorem is that if we have \begin{center}
+		\begin{tikzcd}
+		0\arrow[r] & M \arrow[r] &I_0\arrow[r]& I_1\arrow[r]& I_2\arrow[r] &\dots
+		\end{tikzcd}
+	\end{center}
+	as an exact sequence of injective resolutions and we have a similar long exact sequence for $N_i$. Then there exists a chain map $\{I_i\}\to \{N_i\}$ which is unique upto chain homotopy
+	
+	We can set it up with a diagram
+	\begin{center}
+		\begin{tikzcd}
+		0\arrow[r] & M \arrow[r] \arrow[d,equal] &N_0\arrow[r]\arrow[d,"f_0",dashrightarrow]& N_1\arrow[r]& N_2\arrow[r] &\dots\\
+		0\arrow[r] & M \arrow[r] &I_0\arrow[r]& I_1\arrow[r]& I_2\arrow[r] &\dots
+		\end{tikzcd}
+	\end{center}
+	$f_0$ exists because $I_0$ is injective. Then we can get the diagram
+	\begin{center}
+		\begin{tikzcd}
+		0\arrow[r] & M \arrow[r] \arrow[d,equal] &N_0\arrow[r]\arrow[d,"f_0",dashrightarrow]& \text{im}(N_0\to N_1)\arrow[r]& N_1\arrow[r] &\dots\\
+		0\arrow[r] & M \arrow[r] &I_0\arrow[rr] && I_1
+		\end{tikzcd}
+	\end{center}
+	Construct $f_1$ as $f_1(dx)=df_0(x)$ on the image We can then get $f_1$ on $N_1$ using injectivity. We can perform this on any map $f-\tilde f$. This conclusdes the discussion of universal coefficients in Cohomology. There is a dual statement in Homology using Tor. We will explore this in exercises. The slogan: Ext is the derived Hom. Hom is not homotopy invariant, but Ext is. When we see this for the first time, the appearance of tor and ext in these statements looked bizarre and arbitrary, but they are certainly not.  
+	
+	For the next few classes we will talk about Poincare homology, the stable category, and the relations between many of the objects we have already been discussing. 
+	\subsection{Poincare Duality}
+	
+	We will be talking about some of the algebraic structures we have on cohomology. First, the cup product, coming from the diagonal. For any space, we have $\Delta:X\to X\times X$. We know that we have an isomorphism $C^\ast(X\times X;R\otimes R)\cong C^\ast(X;R)\otimes C^\ast(X;R)$. This induces a product on $H^*$ 
+	\[
+	H^*(X;R)\otimes H^*(X;R)\to H^*(X;R)
+	\]
+	and using degrees, we get
+	\[
+	H^p(X;R)\otimes H^{n-p}(X;R)\to H^n(X;R)
+	\]
+	We know things about this product. They ultimately boil down to facts about the diagonal map. For instance, we know that if we have $X$ and we have \begin{center}
+		\begin{tikzcd}
+		X\arrow[r,"\delta"]\arrow[d,"\Delta"] & X\times X\arrow[d,"\text{id}\times \Delta"]\\
+		X\times X \arrow[r,"\text{id}\times \Delta"] &X\times X\times X
+		\end{tikzcd}
+		\end{center}
+		commutes which tells us that the cup product is associative. We are working with compact manifolds. When $M$ is orientable, we'll have a distinguished class in $H_n(M;R)$ such that the evaluation pairing gives rise to a map $H_n(M;R)\to R$. This is called the fundamental class. The statement of Poincare Duality is 
+		\[
+		H^{n-p}(M;R)\otimes H^{p}(M;R)\to H^n(M;R)\to R
+		\]
+		is a ``perfect pairing" meaning that there is an induced isomorphism $H^{n-p}(M;R)\cong \text{Hom}(H^{n-p}(M;R),R)\cong H_p(M;R)$ Somehow this is telling us that there's data in our top homology group. 
+		
+		We can put this in terms of the cap product: This is a product 
+		$H^p(X;R)\otimes H_n(X;R)\to H_{n-p}(X;R)$ Usually the cup product is written $\cup$ and the cap product is written $\cap$, and $\langle\alpha\cup \beta, \gamma\rangle=\langle\alpha,  \beta\cap\gamma\rangle$ it's basically an adjoint to the cup0 product, and $\langle-,-\rangle$ is the evaluation pairing. we will leave the definition of this next time. We will say now some things about what an orientation is. 
+
+\subsection{Poincare Duality continued}
+Poincare Duality is very old but the real reason it's true takes us to the beginning of modern homotopy theory. We will say something about what Poincare Duality is about. It's about Local vs. Global considerations. $H_n(X)$ is a global invariant of the shape of $X$. It's sensitive to everything that happens to $X$ upto homotopies. On the other hand, if we think about manifolds, whether or not something is a manifold is determined by local similarity to Euclidean space (at every point there is a tangent space). For reasons that will become clear, Poincare duality is connected to ideas about orientation. The first somewhat naive statements is that the vector spaces of homology and cohomology line up properly. But there is a more delicate and informative way of understanding it relating to orientations. 
+
+One way of encoding local information is understanding the relative homology of $\tilde H_n(X,X-\{x\})$. By excision, this is the same as $H_n(U,U-\{x\})$ where $U\subset X$ is open and $x\in U$. There is a natural map $H_n(X)\to H_n(X,X-\{x\})$ which is something liek a quotient map. A lot of the game will be understanding what we can recover from data in the relative homology about the original homology. We will now say something about manifolds and then something more general.
+
+Image that $X$ is a $n$-dimensional manifold. Then, $H_n(X,X-\{x\})$ is isomorphic to $H_{n-1}(S^{n-1})\cong \mathbb{Z}$. Which $U$ do we take? We take a chart. We have some kind of function from the set of $X$ to $\mathsf{Ab}$ that assigns $x$ to $\mathbb Z$. The underlying set of $X$ has no maps or structures. This knows nothing about the topology of $x$. That's not what we meant. We know stuff. By continuity and functoriality for $H_n$, we know that these vary continuously, in some sense. In order to say this precisely we need some language. We will present both languages.
+
+We can make a definition. Define $\prod_1 X$ as the \textit{fundamental groupoid}. What is a groupoid? Well first, a monoid (a category with one  object). A group is a monoid where all the maps are isomorphisms, at least in category theory. This is in some sense a nice way to formulate this because we can extend it. 
+
+A \textbf{Groupoid} is a category where all the maps are isomorphisms. This is some kind of generalized groups. ``A group with many objects" \footnote{Additionally, as an aside, we can define something of the sort of a DG-category which is like a Ring with many objects."} There's a very famous paper due to Steve Mitchell which takes the perspective of doing algebra in a ring with many objects. 
+
+Now we want to define the \textbf{Fundamental Groupoid}. The objects are the points of $X$ and the maps from $x\to y$ is a homotopy class of paths. Maps from $x$ to $y$ are given by homotopy classes of paths $\gamma:I\to X$ with $\gamma(0)=x$ and $\gamma(1)=y$. It's a groupoid because there's a path out and there's a path back between the points, which again are objects
+
+Formally, \textsf{Ob}$(\Pi X)=X$ and \textsf{Mor}$(\Pi X)=\{\gamma:[0,1]\to X\}$ 
+
+A local system of Abelian groups is a functor from $\Pi_1 X\to \mathsf{Ab}$. An $n$-manifold $X$ has a local system  $x\to H_n(X,X-\{x\})$ (*) (You have to check that this actually works). We can also describe this as a bundle. We saw this in passing before when we talked about how vector bundles were classified. In general, there's no reason for $\mathsf{Ab}$ to be Abelian groups. This could be some other kind of algebraic category. It's very useful and enriching to study generalizations of local systems to different algebraic categories than $\mathsf{Ab}$. 
+
+We can also think of this in terms of bundles (covering space). \begin{center}
+	\begin{tikzcd}
+	\coprod_{x\in X} H_n(X,X-\{x\}) (**)\arrow[d]\\
+	X
+	\end{tikzcd} where we topologize this to make it an honest bundle/covering space. 
+\end{center}
+Equivalently, we will give this a name. $\mathcal{O}_x$ which we will use to refer to both $(*)$ and $(**)$ We are going to be interested in the space of sections $\Gamma(X,O_x)$, which is a map where if you go both up and down that morphism, it is the identity. 
+
+We can also consider the sub covering space, which has fiber $H_n(X,X-\{x\})^\times$, i.e. the units. This can be more or less interesting depending on what your ring is. If you're working in $\mathbb{Z}^\times, $ you have $\pm 1$. In $\mathbb{F}_2$ there's just one unit. If you ring is something random, the units can be very complicated.   We will write $\mathcal{O}_X(R)$ for a version of this with coefficients in the ring $R$. We're going to say that an orientation of $M$, (we've switched from $X$ to $M$ here) is a section of this subbundle. of generators. 
+
+A fundamental class of $M$ is an element $\alpha \in H_n(M)$ such that $H_n(M)\to H_n(M,M-\{x\})$ hits the elements specified by the orientation. 
+
+The first result towards poincare duality is that there is a map from $H_n(M,R)\cong \Gamma(M,\mathcal{O}_M^R)$ under the assumption that $M$ is a compact $n$ manifold. The map is taking the image of a class	 $M$ to $M-\{x\}$. The basic idea here is that sections are sort of like cohomology. 
+\\\\
+How do we prove this? Give an inductive proof.  We can call the map $\psi:H_n(M,R)\to \Gamma(M,\mathcal{O}_M^R)$. Every one of our textbooks has a unique way to prove Poincare duality. It may not always be clear, but everyone is actually doing the same thing but with slightly different local approaches. This proof is along the lines of the proof in Miller's notes, which comes mostly from Spanier. 
+
+We first have a lemma. If we are going to induct, we need to know something about what kinds of functors we have. We need to study the properties of $\Gamma$ as a functor. The notation is that we will define $H_n(M\mid A)=H_n(M,M-A)$. These are chains on $M$ which are supported on $A$.  \\
+
+\begin{lemma}{1}
+	If $\psi$ is an isomorphism for $H_n(X\mid A)$ and $H_n(M\mid B)$ and $H_n(M\mid A\cap B)$ then it is an isomorphism for $H_n(M\mid A\cup B)$. It's a patching result.
+\end{lemma}
+\begin{proof}
+	\begin{center}
+		\begin{tikzcd}
+		0 \arrow[r] &H_n(A\mid A\cup B)\arrow[r]\arrow[d,"\cong"]& H_n(M\mid A)\oplus H_n(M\mid B)\arrow[r] \arrow[d,"\cong"]& H_n(M\mid A\cap B)\arrow[d,dashrightarrow,"\cong"]\\
+		0\arrow[r]  & \Gamma(A\cup B)\arrow[r] &\Gamma(A)\oplus \Gamma(B) \arrow[r]& \Gamma(A\cap B)
+		\end{tikzcd}
+	\end{center}
+\end{proof}
+\noindent Now, we need another lemma.\\
+\begin{lemma}{2}
+	$H_n(X\mid-;R)$ and $\Gamma(-,\mathcal{O}_M^R) $ commute with inverse limits. They're both covariant so they take inverse limits to inverse limits. 
+\end{lemma}
+Recall the functoriality of our constructions. $H_n(M\mid A)=H_n(M,M-A)$ and $A\to A'$ with $H_n(M,M-A')\to H_n(M,M-A)$
+and $\Gamma(A', \mathcal{O}^R_M\to \Gamma(A,\mathcal{O}_M^R)$ which is contravariant and given by restriction. We are going to induct over decomposing $M$ as an intersection of finite unions of compact and convex sets. This style of decomposition occurs frequently. If we have $M$ compact and we fix $\ell$ and we know that $M=\bigcup_{i\in I_\ell} B(n,i/\ell)$ By compactness, we know that $|I_\ell|$ is finite. For every $\ell$, there's a collection of points and balls that covers $\ell$. Consider the collection $M_k=\bigcap_{j=1}^k\bigcup_{i\in I}
+B(m,1/j)$
+
+If $A\subset M$ is a compact subset of $M$, a $n$-manifold, then $H_i(M\mid A)=0$ for $i>n$ and $H_n(M\mid A;R)=\Gamma(A,\mathcal{O}_M^R)$. This space of sections is nice, it glues, but we don't know what it is yet. 
+
+There are stages of building up the proof. First, $M=\mathbb{R}^n$ and $A$ is compact and convex subset. The point now is that $A$.\ is a compact and convex subset, so it is homotopy equivalent to a disk. We now know that $H_n(\mathbb{R}^n\mid D^n)\to \Gamma(D^n\mid \mathcal{O}_M^R)$ and these are both equivalent to $H_n(\mathbb{R}^n, \mathbb{R}^n-0)$. 
+
+In the second case, $M=\mathbb{R}^n$ and $A$ is a finite union of compact and convex sets. What happens now? We have it for a single compact and convex set, so if we are a finite union of them, that's why we have Mayer Vietoris. We can just keep inducting up. Now, for the third step, when $M=\mathbb{R}^n$, $A$ is compact, $A$ is an inverse limit, i.e. intersection, of finite unions of compact and convex sets. Since the two invariants in question commute with inverse limits, we decompose the comparison mappings. Once we have that we're done by proceeding work. 
+
+We will pause for a second to make a comment or observation. We have cavalierly assumed that we're working with finite CW complexes. Our constructions of cohomology, for example, agree on finite CW complexes but maybe not infinite spaces. Choices we need to make to make them line up might come up here. there will be more detailed information about this in the next lecture. In the most general forms of Poincare duality end up using Cech cohomology. Singular cohomology doesn't work properly for noncompact things in this instance. Our cohomology was originally given as maps to the Eilenberg Maclane spaces. 
+
 \end{document}
